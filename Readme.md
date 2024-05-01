@@ -12,6 +12,7 @@ shopifyコンテナに入って
 ```
 shopify theme dev --host=0.0.0.0 --store sutekina-wifi.myshopify.com
 ```
+※--host=0.0.0.0 のオプションを付けないとコンテナ外からブラウザアクセスできない
 
 ## テーマのダウンロード
 ```
