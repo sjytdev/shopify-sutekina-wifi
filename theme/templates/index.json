@@ -1,0 +1,346 @@
+{
+  "sections": {
+    "image_banner_BVqxww": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/sw_main-visual.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "bottom-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "rich-text-1": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "すてきなWi-Fiの特徴",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 80,
+        "padding_bottom": 0
+      }
+    },
+    "multicolumn_EqLV4q": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_d6B4Cj": {
+          "type": "column",
+          "settings": {
+            "title": "契約期間の縛り無し",
+            "text": "<p>契約期間の縛りが無いからいつでも解約可能※１<\/p><p>※１ 毎月15日までの申請で当月末解約・16日以降の申請で翌月末解約となります。最低利用期間は1か月となります。<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_hqArMg": {
+          "type": "column",
+          "settings": {
+            "title": "業界最安級",
+            "text": "<p>●●●●円\/月～から利用可能<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_QihNUm": {
+          "type": "column",
+          "settings": {
+            "title": "最短即日発送のスピード対応",
+            "text": "<p>お申込み内容確定後、最短翌営業日にお届け※２<\/p><p>※２ 即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌営業日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_7yrRhz": {
+          "type": "column",
+          "settings": {
+            "title": "安心の補償サポート",
+            "text": "<p>故障に備えた安心保障パックをご用意<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_6dBWCf": {
+          "type": "column",
+          "settings": {
+            "title": "安心なクラウドSIM",
+            "text": "<p>Softbank\/docomo\/auの中から最適なキャリアに自動接続<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_d6B4Cj",
+        "column_hqArMg",
+        "column_QihNUm",
+        "column_7yrRhz",
+        "column_6dBWCf"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "WEBで簡単申込み",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_NYn6Vw": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Qn7ceD": {
+          "type": "heading",
+          "settings": {
+            "heading": "料金プラン",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Qn7ceD"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 20
+      }
+    },
+    "custom_liquid_3TgLGe": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "rich_text_KX8r67": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_gPUtmj": {
+          "type": "heading",
+          "settings": {
+            "heading": "ご利用の流れ",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gPUtmj"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 20
+      }
+    },
+    "multirow_HFpnRL": {
+      "type": "multirow",
+      "blocks": {
+        "row_KnVfcN": {
+          "type": "row",
+          "settings": {
+            "caption": "STEP 1",
+            "heading": "<strong>お申し込み手続き<\/strong>",
+            "text": "<p>利用規約・重要事項説明をご確認のうえ、お申し込みフォームにてお申し込み下さい。<\/p><p>ご用意するもの<br\/>クレジットカード<\/p><p>※海外発行カード、visaデビット、JCBデビット、au<br\/>WALLET、その他プリペイド式クレジットカードはご利用いただけません。<\/p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_YWWEk4": {
+          "type": "row",
+          "settings": {
+            "caption": "STEP 2",
+            "heading": "<strong>お受け取り<\/strong>",
+            "text": "<p>お申込み処理確定後すぐに端末発送の準備に入り、最短で即日発送いたします。<\/p><p>※即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。<\/p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_yhUznf": {
+          "type": "row",
+          "settings": {
+            "caption": "STEP 3",
+            "heading": "<strong>端末の設定<\/strong>",
+            "text": "<p>同封の設定ガイドに沿って利用設定をおこないます。<\/p><p>設定ガイドに沿って利用設定を行えば、カンタンに利用設定が完了します。<br\/><br\/>万が一、お届け時に端末が故障していた場合や初期不良だった場合には、サポートセンターまでご連絡ください。<\/p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_LQ8dGz": {
+          "type": "row",
+          "settings": {
+            "caption": "STEP 4",
+            "heading": "<strong>ご利用開始<\/strong>",
+            "text": "<p>快適なネット環境をお楽しみください<\/p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_KnVfcN",
+        "row_YWWEk4",
+        "row_yhUznf",
+        "row_LQ8dGz"
+      ],
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "image_layout": "alternate-left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_rhF8DX": {
+      "type": "rich-text",
+      "blocks": {
+        "text_egNx7m": {
+          "type": "text",
+          "settings": {
+            "text": "<p>ご契約に関する詳細な内容は、すべて利用規約に記載しております。利用規約はWEB上で確認できます。また、ご契約情報はマイページよりご確認いただけます。<\/p>"
+          }
+        },
+        "button_7cCgJt": {
+          "type": "button",
+          "settings": {
+            "button_label": "WEBで簡単申込み",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_egNx7m",
+        "button_7cCgJt"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 20
+      }
+    },
+    "rich_text_VGEWhX": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_LVA8nP": {
+          "type": "heading",
+          "settings": {
+            "heading": "よくある質問",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LVA8nP"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 80,
+        "padding_bottom": 20
+      }
+    },
+    "17144630021a1b89d4": {
+      "type": "apps",
+      "blocks": {
+        "faq_reterior_fap_accordion_wbgRy4": {
+          "type": "shopify:\/\/apps\/faq\/blocks\/reterior-fap-accordion\/4afbb0c9-7aac-41dd-9fbd-5f3e9f946be2",
+          "settings": {
+            "title": "質問を入力してください。",
+            "answer": "回答を入力してください。",
+            "q_bg_color": "#ffffff",
+            "q_color": "#000000",
+            "q_font_weight": false,
+            "q_font_size_mobile": "tw-text-base",
+            "q_font_size_pc": "md:tw-text-lg",
+            "q_letter_spacing": 1,
+            "q_line_height": 1.2,
+            "icon_style": "plus_rotation",
+            "icon_color": "#000000",
+            "a_color": "#000000",
+            "a_font_weight": false,
+            "a_font_size_mobile": "tw-text-sm",
+            "a_font_size_pc": "md:tw-text-base",
+            "a_letter_spacing": 1,
+            "a_line_height": 1.2,
+            "is_border_bottom": true,
+            "border_width": 1,
+            "border_color": "#888888",
+            "is_max_width": true,
+            "max_width": 800,
+            "padding_y": "tw-py-4",
+            "is_padding_x": true
+          }
+        }
+      },
+      "block_order": [
+        "faq_reterior_fap_accordion_wbgRy4"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "image_banner_BVqxww",
+    "rich-text-1",
+    "multicolumn_EqLV4q",
+    "rich_text_NYn6Vw",
+    "custom_liquid_3TgLGe",
+    "rich_text_KX8r67",
+    "multirow_HFpnRL",
+    "rich_text_rhF8DX",
+    "rich_text_VGEWhX",
+    "17144630021a1b89d4"
+  ]
+}
