@@ -4,15 +4,30 @@
 
 ```
 docker-compose up -d --build
-docker-compose exec -it shopify bash
 ```
 
 ## テーマのローカルプレビューサーバー起動
-shopifyコンテナに入って
+
 ```
+# shopifyコンテナに入って
+docker-compose exec -it shopify bash
+# テーマフォルダに移動して
+cd theme
+
 shopify theme dev --host=0.0.0.0 --store sutekina-wifi.myshopify.com
 ```
 ※--host=0.0.0.0 のオプションを付けないとコンテナ外からブラウザアクセスできない
+
+# 上記の自動実行
+```
+# shopifyコンテナに入って
+# ※テーマフォルダに移動する前に実行
+bash go.sh
+```
+
+## ローカルプレビュー
+http://localhost:9292
+
 
 ## テーマのダウンロード
 ```

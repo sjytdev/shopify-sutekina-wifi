@@ -30,3 +30,5 @@ WORKDIR /usr/src/app
 
 # コンテナ起動時に bash を実行
 ENTRYPOINT ["/bin/bash"]
+
+# コンテナ起動時に Nginxサービスを起動
