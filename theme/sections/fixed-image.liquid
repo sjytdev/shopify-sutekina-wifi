@@ -1,7 +1,7 @@
 {{ 'section-fixed-image.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign full_width = '100vw',
+  assign full_width = '100vw'
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
 -%}
 
@@ -22,11 +22,11 @@
         | image_tag:
           width: section.settings.image.width,
           sizes: sizes,
-          widths: widths,
+          widths: widths
       }}
     </div>
   {%- endif -%}
-  
+
 </div>
 
 {% schema %}
