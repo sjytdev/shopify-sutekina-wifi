@@ -1157,6 +1157,25 @@
         "name": "画像バナー"
       }
     },
+    "fixed-image": {
+      "name": "固定イメージ",
+      "settings": {
+        "image": {
+          "info": "0000px x 0000pxが最適",
+          "label": "デスクトップ／タブレット表示用画像"
+        },
+        "image_mobile": {
+          "info": "0000px x 0000pxが最適",
+          "label": "モバイル用画像"
+        },
+        "wide_type": {
+          "label": "全幅で表示する"
+        }
+      },
+      "presets": {
+        "name": "固定イメージ"
+      }
+    },
     "image-with-text": {
       "name": "テキスト付き画像",
       "settings": {
