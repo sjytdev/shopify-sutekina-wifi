@@ -228,6 +228,7 @@
       {%- endif -%}
     {%- endif -%}
 
+    <!--
     <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
       <div class="desktop-localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
@@ -282,7 +283,6 @@
         {%- endcase -%}
       {%- endfor -%}
 
-      <!--
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {%- liquid
           if cart == empty
@@ -301,8 +301,8 @@
           </div>
         {%- endif -%}
       </a>
-      -->
     </div>
+    -->
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
 

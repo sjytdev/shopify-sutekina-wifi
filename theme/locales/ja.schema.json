@@ -1161,11 +1161,11 @@
       "name": "固定イメージ",
       "settings": {
         "image": {
-          "info": "0000px x 0000pxが最適",
+          "info": "width:750px以上の時に表示される画像",
           "label": "デスクトップ／タブレット表示用画像"
         },
         "image_mobile": {
-          "info": "0000px x 0000pxが最適",
+          "info": "width:749px以下の時に表示される画像（縦長推奨）",
           "label": "モバイル用画像"
         },
         "wide_type": {

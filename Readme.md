@@ -33,3 +33,8 @@ http://localhost:9292
 ```
 shopify theme pull --store=sutekina-wifi.myshopify.com
 ```
+
+## ローカルの編集内容をshopifyのストアに反映させる
+```
+shopify theme push
+```

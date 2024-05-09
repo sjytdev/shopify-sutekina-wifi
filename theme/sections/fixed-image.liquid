@@ -5,24 +5,30 @@
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
 -%}
 
-<div id="Banner-{{ section.id }}" class="banner">
+<div id="Fixed-image-{{ section.id }}" class="fixed-image">
 
   {%- if section.settings.image != blank -%}
-    <div class="banner__media media">
+    <div class="{% if section.settings.wide_type == false %}page-width {% endif %}fixed-image-media scroll-trigger animate--slide-in">
       {%- liquid
-        if section.settings.wide_type
           assign sizes = '100vw'
-        else
-          assign sizes = '50vw'
-        endif
       -%}
       {{
         section.settings.image
-        | image_url: width: 3840
+        | image_url: width: 3000
         | image_tag:
           width: section.settings.image.width,
           sizes: sizes,
-          widths: widths
+          widths: widths,
+          class: "pc"
+      }}
+      {{
+        section.settings.image_mobile
+        | image_url: width: 1100
+        | image_tag:
+          width: section.settings.image_mobile.width,
+          sizes: sizes,
+          widths: widths,
+          class: "sp"
       }}
     </div>
   {%- endif -%}
