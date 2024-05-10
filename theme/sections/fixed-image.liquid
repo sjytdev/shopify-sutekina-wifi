@@ -21,6 +21,7 @@
           widths: widths,
           class: "pc"
       }}
+      {%- if section.settings.image_mobile != blank -%}
       {{
         section.settings.image_mobile
         | image_url: width: 1100
@@ -30,6 +31,7 @@
           widths: widths,
           class: "sp"
       }}
+      {%- endif -%}
     </div>
   {%- endif -%}
 
