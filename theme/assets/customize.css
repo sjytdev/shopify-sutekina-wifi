@@ -1,6 +1,6 @@
 ul.list-menu li:last-child a span {
     /* background: #7C6723; */
-    background: linear-gradient(0deg, #e06cb7, #ffe25e);;
+    background: linear-gradient(170deg, rgba(254, 217, 81, 1) 11%, rgba(255, 70, 199, 1) 81%);
     color: #fff;
     padding: 3px 18px 5px;
     border-radius: 10rem;

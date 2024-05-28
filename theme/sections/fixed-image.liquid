@@ -5,7 +5,7 @@
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
 -%}
 
-<div id="Fixed-image-{{ section.id }}" class="fixed-image">
+<div id="Fixed-image-{{ section.id }}" class="fixed-image color-{{ section.settings.color_scheme }} gradient">
 
   {%- if section.settings.image != blank -%}
     <div class="{% if section.settings.wide_type == false %}page-width {% endif %}fixed-image-media scroll-trigger animate--slide-in">
@@ -63,6 +63,12 @@
       "id": "wide_type",
       "default": false,
       "label": "t:sections.fixed-image.settings.wide_type.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
     }
   ],
   "presets": [

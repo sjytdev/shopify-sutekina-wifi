@@ -38,3 +38,20 @@ shopify theme pull --store=sutekina-wifi.myshopify.com
 ```
 shopify theme push
 ```
+
+## Shopifyログイン
+shopifyプレビューサーバー起動時などにログインを求めれた場合
+
+To run this command, log in to Shopify Partners.  
+Press any key to open the login page on your browser  
+上記メッセージの表示後にキー押下することでURLが表示される。
+URLにアクセスしログイン、最後に127.0.0.1へのリダイレクトでエラーになるので
+ブラウザのURL欄のURLをコピー
+ターミナルでCtrl + zを押して中断する
+'''
+curl "コピーしたURL" &
+fg
+'''
+※上2行を1行ずつ実行
+loginの文字列が出たらOK
+Ctrl + cを押して処理を終了

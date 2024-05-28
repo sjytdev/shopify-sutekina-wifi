@@ -5,13 +5,14 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/sw_main-visual.png",
         "image_mobile": "shopify:\/\/shop_images\/sw_main-visual_sp.png",
-        "wide_type": true
+        "wide_type": true,
+        "color_scheme": "scheme-1"
       }
     },
-    "rich-text-1": {
+    "rich_text_LUKamb": {
       "type": "rich-text",
       "blocks": {
-        "heading": {
+        "heading_QBxq7g": {
           "type": "heading",
           "settings": {
             "heading": "すてきなWi-Fiの特徴",
@@ -20,15 +21,15 @@
         }
       },
       "block_order": [
-        "heading"
+        "heading_QBxq7g"
       ],
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "padding_top": 80,
-        "padding_bottom": 0
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 12
       }
     },
     "multicolumn_EqLV4q": {
@@ -61,6 +62,15 @@
             "link": ""
           }
         },
+        "column_BUFfwK": {
+          "type": "column",
+          "settings": {
+            "title": "用途に合わせて選べるプラン",
+            "text": "<p>ーーGB、100GB、ーーーGBの中からお好きな容量を選択可能<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "column_7yrRhz": {
           "type": "column",
           "settings": {
@@ -84,6 +94,7 @@
         "column_d6B4Cj",
         "column_hqArMg",
         "column_QihNUm",
+        "column_BUFfwK",
         "column_7yrRhz",
         "column_6dBWCf"
       ],
@@ -93,11 +104,11 @@
         "image_width": "full",
         "image_ratio": "adapt",
         "columns_desktop": 3,
-        "column_alignment": "left",
+        "column_alignment": "center",
         "background_style": "primary",
         "button_label": "WEBで簡単申込み",
-        "button_link": "",
-        "color_scheme": "",
+        "button_link": "#",
+        "color_scheme": "scheme-2",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
         "padding_top": 36,
@@ -165,6 +176,7 @@
         "row_KnVfcN": {
           "type": "row",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_s1_2x_e7ae280d-cc37-4664-9564-8e0125413102.png",
             "caption": "STEP 1",
             "heading": "<strong>お申し込み手続き<\/strong>",
             "text": "<p>利用規約・重要事項説明をご確認のうえ、お申し込みフォームにてお申し込み下さい。<\/p><p>ご用意するもの<br\/>クレジットカード<\/p><p>※海外発行カード、visaデビット、JCBデビット、au<br\/>WALLET、その他プリペイド式クレジットカードはご利用いただけません。<\/p>",
@@ -175,6 +187,7 @@
         "row_YWWEk4": {
           "type": "row",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_s2_2x_c736b91d-1271-4526-8495-7d3e64fa7dd6.png",
             "caption": "STEP 2",
             "heading": "<strong>お受け取り<\/strong>",
             "text": "<p>お申込み処理確定後すぐに端末発送の準備に入り、最短で即日発送いたします。<\/p><p>※即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。<\/p>",
@@ -185,6 +198,7 @@
         "row_yhUznf": {
           "type": "row",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_s3_2x_7dc12d9b-b993-420b-bdfd-ad5a5bde17d5.png",
             "caption": "STEP 3",
             "heading": "<strong>端末の設定<\/strong>",
             "text": "<p>同封の設定ガイドに沿って利用設定をおこないます。<\/p><p>設定ガイドに沿って利用設定を行えば、カンタンに利用設定が完了します。<br\/><br\/>万が一、お届け時に端末が故障していた場合や初期不良だった場合には、サポートセンターまでご連絡ください。<\/p>",
@@ -195,6 +209,7 @@
         "row_LQ8dGz": {
           "type": "row",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_s4_2x_0b064bc9-c2e7-46e4-800a-0b0c0d9f0260.png",
             "caption": "STEP 4",
             "heading": "<strong>ご利用開始<\/strong>",
             "text": "<p>快適なネット環境をお楽しみください<\/p>",
@@ -210,7 +225,7 @@
         "row_LQ8dGz"
       ],
       "settings": {
-        "image_height": "medium",
+        "image_height": "adapt",
         "desktop_image_width": "medium",
         "heading_size": "h1",
         "text_style": "body",
@@ -219,7 +234,7 @@
         "desktop_content_alignment": "left",
         "image_layout": "alternate-left",
         "section_color_scheme": "",
-        "row_color_scheme": "",
+        "row_color_scheme": "scheme-2",
         "mobile_content_alignment": "left",
         "padding_top": 36,
         "padding_bottom": 36
@@ -325,7 +340,7 @@
   },
   "order": [
     "fixed_image_8A6rPx",
-    "rich-text-1",
+    "rich_text_LUKamb",
     "multicolumn_EqLV4q",
     "rich_text_NYn6Vw",
     "custom_liquid_3TgLGe",

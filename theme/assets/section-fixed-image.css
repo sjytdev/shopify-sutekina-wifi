@@ -4,7 +4,25 @@
   backface-visibility: hidden;
   image-rendering: crisp-edges;
   image-rendering: -webkit-optimize-contrast;
+  position: relative;
+  top: 10px;
 }
+
+.fixed-image {
+  padding-bottom: calc(10vw + 10px);  /* 三角形の高さを指定 */
+  position: relative;
+  overflow: hidden;
+}
+
+.fixed-image::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom: 10vw solid #fff;  /* 三角を白にする */ 
+  border-left: 100vw solid transparent;
+}
+
 
 @media screen and (max-width: 749px) {
   .fixed-image-media img.pc {
