@@ -2,6 +2,7 @@
   "current": {
     "logo": "shopify:\/\/shop_images\/sutekina-wifi_logo.svg",
     "logo_width": 200,
+    "favicon": "shopify:\/\/shop_images\/favicon.png",
     "type_header_font": "m_plus_1_n4",
     "heading_scale": 100,
     "type_body_font": "m_plus_1_n4",
@@ -138,7 +139,7 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#fcfcfc",
+          "background": "#ffffff",
           "background_gradient": "linear-gradient(127deg, rgba(251, 255, 226, 1) 11%, rgba(218, 255, 255, 1) 81%)",
           "text": "#383838",
           "button": "#7c6723",
@@ -171,9 +172,9 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#bc5631",
+          "background": "#bebebe",
           "background_gradient": "",
-          "text": "#fcfcfc",
+          "text": "#ffffff",
           "button": "#fcfcfc",
           "button_label": "#bc5631",
           "secondary_button_label": "#fcfcfc",

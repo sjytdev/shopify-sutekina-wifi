@@ -74,11 +74,51 @@
 }
 
 .multicolumn.background-primary .multicolumn-card {
-  border-radius: 0.8rem;
-  border: 4px solid #29ABE2;
-  height: 480px;
-  box-shadow: 0 3px 15px #ccc;
+  border-radius: 1.5rem;
+  height: 460px;
+  box-shadow: 0 3px 15px #dadada;
   margin: 0px 5px 12px;
+  position: relative;
+  padding: 5px;
+  background: #fcfcfc;
+  border: 2px solid #fff;
+  background: rgb(245, 245, 245);
+  background: linear-gradient(318deg, rgba(248, 248, 248, 1) 0%, rgba(252, 252, 252, 1) 35%, rgba(255, 255, 255, 1) 100%);
+}
+
+/* ブロック内POINT */
+.multicolumn-card .multicolumn-card__point {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: bold;
+  top: -10px;
+  right: 10px;
+  color: #29ABE2;
+}
+
+/* ブロック内POINT数字 */
+.multicolumn-card .multicolumn-card__point span {
+  font-size: 3rem;
+}
+
+/* ブロック内タイトル */
+.multicolumn-card h3.inline-richtext {
+  margin-bottom: 8px;
+  font-size: 1.9rem;
+  color: #a57e1b;
+}
+
+/* ブロック内説明文*/
+.multicolumn-card .rte {
+  font-size: 1.6rem;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+/* ブロック内補足 */
+.multicolumn-card .supplement {
+  font-size: 1.2rem;
+  line-height: 1.2;
 }
 
 .multicolumn-list h3 {
@@ -150,7 +190,7 @@
 }
 
 .multicolumn-card__info {
-  padding: 2.5rem;
+  padding: 0.5rem 2.5rem;
 }
 
 .background-none .multicolumn-card__info {

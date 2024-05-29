@@ -38,8 +38,10 @@
         "column_d6B4Cj": {
           "type": "column",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_p1.png",
             "title": "契約期間の縛り無し",
-            "text": "<p>契約期間の縛りが無いからいつでも解約可能※１<\/p><p>※１ 毎月15日までの申請で当月末解約・16日以降の申請で翌月末解約となります。最低利用期間は1か月となります。<\/p>",
+            "text": "<p>契約期間の縛りが無いからいつでも解約可能※1<\/p>",
+            "supplement": "<p>※１ 毎月15日までの申請で当月末解約・16日以降の申請で翌月末解約となります。最低利用期間は1か月となります。<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -47,8 +49,10 @@
         "column_hqArMg": {
           "type": "column",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_p2.png",
             "title": "業界最安級",
             "text": "<p>●●●●円\/月～から利用可能<\/p>",
+            "supplement": "",
             "link_label": "",
             "link": ""
           }
@@ -56,8 +60,10 @@
         "column_QihNUm": {
           "type": "column",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_p3.png",
             "title": "最短即日発送のスピード対応",
-            "text": "<p>お申込み内容確定後、最短翌営業日にお届け※２<\/p><p>※２ 即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌営業日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。<\/p>",
+            "text": "<p>お申込み内容確定後、最短翌営業日にお届け※２<\/p>",
+            "supplement": "<p>※２ 即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌営業日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -65,8 +71,10 @@
         "column_BUFfwK": {
           "type": "column",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_p4.png",
             "title": "用途に合わせて選べるプラン",
             "text": "<p>ーーGB、100GB、ーーーGBの中からお好きな容量を選択可能<\/p>",
+            "supplement": "",
             "link_label": "",
             "link": ""
           }
@@ -74,8 +82,10 @@
         "column_7yrRhz": {
           "type": "column",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_p5.png",
             "title": "安心の補償サポート",
             "text": "<p>故障に備えた安心保障パックをご用意<\/p>",
+            "supplement": "",
             "link_label": "",
             "link": ""
           }
@@ -83,8 +93,10 @@
         "column_6dBWCf": {
           "type": "column",
           "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_p6.png",
             "title": "安心なクラウドSIM",
             "text": "<p>Softbank\/docomo\/auの中から最適なキャリアに自動接続<\/p>",
+            "supplement": "",
             "link_label": "",
             "link": ""
           }
@@ -99,15 +111,11 @@
         "column_6dBWCf"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h2",
         "image_width": "full",
         "image_ratio": "adapt",
         "columns_desktop": 3,
-        "column_alignment": "center",
+        "column_alignment": "left",
         "background_style": "primary",
-        "button_label": "WEBで簡単申込み",
-        "button_link": "#",
         "color_scheme": "scheme-2",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
@@ -132,7 +140,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "full_width": true,
         "padding_top": 80,
         "padding_bottom": 20
@@ -142,7 +150,7 @@
       "type": "custom-liquid",
       "settings": {
         "custom_liquid": "",
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "padding_top": 40,
         "padding_bottom": 52
       }
@@ -164,7 +172,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "full_width": true,
         "padding_top": 80,
         "padding_bottom": 20
@@ -291,7 +299,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "full_width": true,
         "padding_top": 80,
         "padding_bottom": 20
