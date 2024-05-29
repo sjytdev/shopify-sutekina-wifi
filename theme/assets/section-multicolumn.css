@@ -75,12 +75,12 @@
 
 .multicolumn.background-primary .multicolumn-card {
   border-radius: 1.5rem;
-  height: 460px;
+  min-height: 440px;
+  height: 100%;
   box-shadow: 0 3px 15px #dadada;
   margin: 0px 5px 12px;
   position: relative;
   padding: 5px;
-  background: #fcfcfc;
   border: 2px solid #fff;
   background: rgb(245, 245, 245);
   background: linear-gradient(318deg, rgba(248, 248, 248, 1) 0%, rgba(252, 252, 252, 1) 35%, rgba(255, 255, 255, 1) 100%);
@@ -91,8 +91,8 @@
   position: absolute;
   font-size: 1.5rem;
   font-weight: bold;
-  top: -10px;
-  right: 10px;
+  top: -2px;
+  right: 12px;
   color: #29ABE2;
 }
 
@@ -138,6 +138,10 @@
 
 .multicolumn-card__info > :nth-child(2) {
   margin-top: 1rem;
+}
+
+.multicolumn-list {
+  padding: 10px 0 20px;
 }
 
 .multicolumn-list__item.center .media--adapt,
