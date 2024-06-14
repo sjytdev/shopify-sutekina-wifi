@@ -1,10 +1,17 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "section_title_xLhytA": {
+      "type": "section-title",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 0
+        "heading": "お問い合わせ",
+        "heading_size": "h2",
+        "subheading": "CONTACT US",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "form": {
@@ -12,14 +19,22 @@
       "settings": {
         "heading": "",
         "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 40,
+        "color_scheme": "scheme-2",
+        "padding_top": 72,
         "padding_bottom": 68
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
   "order": [
-    "main",
-    "form"
+    "section_title_xLhytA",
+    "form",
+    "main"
   ]
 }

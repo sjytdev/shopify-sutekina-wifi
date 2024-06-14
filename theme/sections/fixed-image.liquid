@@ -5,7 +5,11 @@
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
 -%}
 
-<div id="Fixed-image-{{ section.id }}" class="fixed-image color-{{ section.settings.color_scheme }} gradient">
+{% capture max_width_style %}
+  max-width: {{ section.settings.max_width }}px;
+{% endcapture %}
+
+<div id="Fixed-image-{{ section.id }}" class="fixed-image color-{{ section.settings.color_scheme }} gradient{% if section.settings.diagonal_background %} has-diagonal-background{% endif %}">
 
   {%- if section.settings.image != blank -%}
     <div class="{% if section.settings.wide_type == false %}page-width {% endif %}fixed-image-media scroll-trigger animate--slide-in">
@@ -16,19 +20,18 @@
         section.settings.image
         | image_url: width: 3000
         | image_tag:
-          width: section.settings.image.width,
-          sizes: sizes,
           widths: widths,
-          class: "pc"
+          sizes: sizes,
+          class: "pc",
+          style: max_width_style
       }}
       {%- if section.settings.image_mobile != blank -%}
       {{
         section.settings.image_mobile
         | image_url: width: 1100
         | image_tag:
-          width: section.settings.image_mobile.width,
-          sizes: sizes,
           widths: widths,
+          sizes: sizes,
           class: "sp"
       }}
       {%- endif -%}
@@ -53,6 +56,12 @@
       "info": "t:sections.fixed-image.settings.image.info"
     },
     {
+      "type": "number",
+      "id": "max_width",
+      "label": "t:sections.fixed-image.settings.max_width.label",
+      "default": 1500
+    },
+    {
       "type": "image_picker",
       "id": "image_mobile",
       "label": "t:sections.fixed-image.settings.image_mobile.label",
@@ -63,6 +72,12 @@
       "id": "wide_type",
       "default": false,
       "label": "t:sections.fixed-image.settings.wide_type.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "diagonal_background",
+      "default": false,
+      "label": "斜めの背景を有効にする"
     },
     {
       "type": "color_scheme",

@@ -17,3 +17,70 @@ ul.list-menu li:last-child a span::before {
     width: 100%;
     top: -16px;
 }
+
+/* カートアイコン非表示 */
+a#cart-icon-bubble {
+    display: none;
+}
+
+
+a.btn-apply {
+    /* background: #7C6723; */
+    background: linear-gradient(170deg, rgba(254, 217, 81, 1) 11%, rgba(255, 70, 199, 1) 81%);
+    color: #fff;
+    padding: 3px 30px 5px;
+    border-radius: 10rem;
+    position: relative;
+    top: -3px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+button.btn-apply {
+    background: linear-gradient(170deg, rgba(254, 217, 81, 1) 11%, rgba(255, 70, 199, 1) 81%);
+    color: #fff;
+    padding: 5px 30px 5px;
+    border-radius: 10rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    transition: background-color 1s linear, background 1s linear;
+    -webkit-transition: background-color 1s linear, background 1s linear;
+}
+
+button.btn-apply:hover:not(button.btn-apply.disabled, button.btn-apply:disabled) {
+    cursor: pointer;
+}
+
+button.btn-apply.disabled, button.btn-apply:disabled {
+    background: linear-gradient(170deg, rgba(200, 200, 200, 1) 11%, rgb(150, 150, 150) 81%);
+}
+
+
+.customer.account {
+    padding: 105px;
+}
+
+table.cart-items {
+    width: 70%;
+    border-collapse: collapse;
+    margin: 2rem auto;
+}
+
+table.cart-items th {
+    border-bottom: 0.2rem solid rgba(var(--color-foreground), 0.5);
+}
+
+table.cart-items td {
+    border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.1);
+}
+
+cart-items .cart__items {
+    border-bottom: none;
+    padding-bottom: 1rem;
+}
+
+
+

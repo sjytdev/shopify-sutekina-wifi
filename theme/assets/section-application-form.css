@@ -1,0 +1,114 @@
+.application-form {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.application-form h2 {
+    font-size: 2rem;
+    margin: 5rem 0 3rem;
+    font-weight: bold;
+}
+
+.application-form ul.basic-plan-options,
+.application-form ul.insurance-option-options,
+.application-form ul.delivery-option-options,
+.application-form ul.data-plan-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.application-form ul li label {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    display: flex;
+    min-height: 220px;
+}
+
+.application-form ul li label:hover {
+    cursor: pointer;
+}
+
+.application-form ul.basic-plan-options li,
+.application-form ul.insurance-option-options li,
+.application-form ul.delivery-option-options li {
+    list-style: none;
+    width: 50%;
+    margin: 0 0.5rem;
+    border-radius: 1.5rem;
+    min-height: 220px;
+    box-shadow: 0 3px 15px #f1f1f1;
+    margin: 0px 5px 12px;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    border: 4px solid transparent; /* デフォルトでは透明なボーダー */
+    transition: border-color 0.3s ease-in-out; /* ボーダーの色の変化にアニメーションを追加 */
+}
+
+.application-form ul.data-plan-options li {
+    list-style: none;
+    width: 25%;
+    margin: 0 0.5rem;
+    border-radius: 1.5rem;
+    min-height: 100px;
+    box-shadow: 0 3px 15px #f1f1f1;
+    margin: 0px 5px 12px;
+    position: relative;
+    text-align: center;
+    box-sizing: border-box;
+    border: 4px solid transparent; /* デフォルトでは透明なボーダー */
+    transition: border-color 0.15s ease-in-out; /* ボーダーの色の変化にアニメーションを追加 */
+}
+
+.application-form ul li.selected-item {
+    border-color: var(--selected-border-color); /* 選択されたときにボーダーの色を変更 */
+}
+
+.application-form input[type="radio"] {
+    display: none;
+}
+
+.application-form .order-quantity {
+    margin-bottom: 6rem;;
+}
+
+.application-form .order-quantity ul {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.application-form .order-quantity li {
+    list-style: none;
+    display: table-cell;
+}
+
+.application-form .rte {
+    color: #555;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 80%;
+    height: 200px;
+    overflow-y: scroll;
+    padding: 6px 2rem;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.application-form .rte h2 {
+    font-size: 2rem;
+    margin: 1rem 0 0.5rem;
+    font-weight: bold;
+}
+
+.application-form .rte p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+}

@@ -1,0 +1,529 @@
+{{ 'section-application-form.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- unless customer -%}
+{% comment %} <script>
+  window.location.href = '/account/login';
+</script> {% endcomment %}
+{%- endunless -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    --selected-border-color: {{ section.settings.selected_border_color }};
+  }
+{%- endstyle -%}
+
+<script>
+  $(document).ready(function() {
+      // カートをクリアする関数
+      function clearCart() {
+          $.ajax({
+              type: 'POST',
+              url: '/cart/clear.js',
+              success: function() {
+                  console.log('カートをクリアしました');
+                  initializeSelection();
+              },
+              error: function(error) {
+                  console.log('Error clearing cart:', error);
+              }
+          });
+      }
+
+      // ユーザーがログインしているかどうかを確認する関数
+      function checkLoginStatus() {
+          $.ajax({
+              url: '/account',
+              type: 'GET',
+              success: function(data) {
+                  if ($(data).find('.customer').length === 0) {
+                      // ログインしていない場合、ログインページにリダイレクト
+                      console.log('ログインしていないためログインページにリダイレクト');
+                      window.location.href = '/account/login';
+                  }
+              },
+              error: function(error) {
+                  console.log('Error checking login status:', error);
+              }
+          });
+      }
+
+      // ページ読み込み時にカートをクリア
+      clearCart();
+
+      // ページ読み込み時にログインステータスを確認
+      checkLoginStatus();
+
+      var plans = {
+          "plan1": {
+              "product": {{ section.settings.basic_plan_1_product | json }},
+              "title": "{{ section.settings.basic_plan_1_title }}",
+              "image": "{{ section.settings.basic_plan_1_image | img_url: 'medium' }}",
+              "variants": {{ section.settings.basic_plan_1_product.variants | json }},
+              "selling_plan_id": "{{ section.settings.basic_plan_1_selling_plan_id }}"
+          },
+          "plan2": {
+              "product": {{ section.settings.basic_plan_2_product | json }},
+              "title": "{{ section.settings.basic_plan_2_title }}",
+              "image": "{{ section.settings.basic_plan_2_image | img_url: 'medium' }}",
+              "variants": {{ section.settings.basic_plan_2_product.variants | json }},
+              "selling_plan_id": "{{ section.settings.basic_plan_2_selling_plan_id }}"
+          }
+      };
+
+      function updateDataPlanOptions(selectedPlan) {
+          var plan = plans[selectedPlan];
+          var $dataPlanOptions = $('.data-plan-options');
+          $dataPlanOptions.empty();
+          $.each(plan.variants, function(index, variant) {
+              $dataPlanOptions.append(
+                  '<li>' +
+                  '<label class="data-plan-option">' +
+                  '<input type="radio" name="data-plan" value="' + variant.id + '" ' + (index === 0 ? 'checked' : '') + ' />' +
+                  '<span>' + variant.title + ' - ¥' + (variant.price / 100) + '</span>' +
+                  '</label>' +
+                  '</li>'
+              );
+          });
+          $('input[name="data-plan"]:first').prop('checked', true).closest('li').addClass('selected-item');
+          $('input[name="data-plan"]').change(function() {
+              $('input[name="data-plan"]').each(function() {
+                  if ($(this).is(':checked')) {
+                      $(this).closest('li').addClass('selected-item');
+                  } else {
+                      $(this).closest('li').removeClass('selected-item');
+                  }
+              });
+          });
+      }
+
+      // 初期化
+      function initializeSelection() {
+          $('input[type="radio"]').each(function() {
+              if ($(this).is(':checked')) {
+                  $(this).closest('li').addClass('selected-item');
+              } else {
+                  $(this).closest('li').removeClass('selected-item');
+              }
+          });
+
+          $('input[type="radio"]').change(function() {
+              var name = $(this).attr('name');
+              $('input[name="' + name + '"]').each(function() {
+                  if ($(this).is(':checked')) {
+                      $(this).closest('li').addClass('selected-item');
+                  } else {
+                      $(this).closest('li').removeClass('selected-item');
+                  }
+              });
+          });
+      }
+
+      $('input[name="basic-plan"]:first').prop('checked', true);
+      var selectedPlan = $('input[name="basic-plan"]:checked').val();
+      updateDataPlanOptions(selectedPlan);
+
+      $('input[name="basic-plan"]').change(function() {
+          var selectedPlan = $('input[name="basic-plan"]:checked').val();
+          updateDataPlanOptions(selectedPlan);
+          $('input[name="basic-plan"]').each(function() {
+              if ($(this).is(':checked')) {
+                  $(this).closest('li').addClass('selected-item');
+              } else {
+                  $(this).closest('li').removeClass('selected-item');
+              }
+          });
+      });
+
+      function checkAgreements() {
+          var $button = $('.submit-button button');
+          if ($('#terms-agree').is(':checked') && $('#pre-check-agree').is(':checked')) {
+              $button.prop('disabled', false).removeClass('disabled');
+              $('.error-message').hide();
+          } else {
+              $button.prop('disabled', true).addClass('disabled');
+              $('.error-message').show();
+          }
+      }
+
+      $('#terms-agree, #pre-check-agree').change(function() {
+          checkAgreements();
+      });
+
+      checkAgreements();
+
+      $('.submit-button button').click(function(event) {
+          if (!$('#terms-agree').is(':checked') || !$('#pre-check-agree').is(':checked')) {
+              event.preventDefault();
+              $('.error-message').show();
+          } else {
+              event.preventDefault();
+              var selectedBasicPlan = $('input[name="basic-plan"]:checked').val();
+              var selectedDataPlan = $('input[name="data-plan"]:checked').val();
+              var productID = plans[selectedBasicPlan].product.id;
+              var variantID = selectedDataPlan;
+              var basicPlanSellingPlanId = plans[selectedBasicPlan].selling_plan_id;
+              var orderQuantity = $('input[name="order-quantity"]').val();
+              var deliveryOption = $('input[name="delivery-option"]:checked').val();
+
+              var items = [];
+
+              // 下記順序とは逆順になるので注意
+
+              // 初期費用
+              items.push({
+                  id: "{{ section.settings.initial_cost_product.variants.first.id }}",
+                  quantity: orderQuantity
+              });
+
+              // データ容量プラン
+              items.push({
+                  id: variantID,
+                  quantity: orderQuantity,
+                  selling_plan: basicPlanSellingPlanId
+              });
+
+              // レンタル端末
+              items.push({
+                  id: "{{ section.settings.rental_device.variants.first.id }}",
+                  quantity: orderQuantity,
+                  properties: {
+                    "発送タイミング": deliveryOption
+                  }
+              });
+
+              // 補償オプション
+              if ($('input[name="insurance-option"]:checked').val() !== "none") {
+                  items.push({
+                      id: "{{ section.settings.insurance_product.variants.first.id }}",
+                      quantity: orderQuantity,
+                      selling_plan: "{{ section.settings.insurance_selling_plan_id }}"
+                  });
+              }
+
+              // デバッグ用ログ
+              console.log("Items to add to cart:", items);
+
+              $.ajax({
+                  type: 'POST',
+                  url: '/cart/add.js',
+                  data: JSON.stringify({ items: items.reverse() }),
+                  dataType: 'json',
+                  contentType: 'application/json',
+                  success: function() {
+                      window.location.href = '/cart';
+                  },
+                  error: function(error) {
+                      console.log("Error adding to cart:", error);
+                  }
+              });
+          }
+      });
+
+      // 補償オプションの初期選択
+      $('input[name="insurance-option"]:first').prop('checked', true).closest('li').addClass('selected-item');
+
+      // お届けについての初期選択
+      $('input[name="delivery-option"]:first').prop('checked', true).closest('li').addClass('selected-item');
+
+      initializeSelection();
+  });
+</script>
+
+<div class="application-form">
+  <div class="page-width section section-{{ section.id }}-padding">
+    <!-- 基本プラン選択 -->
+    <div class="basic-plan">
+      <h2>基本プランを選択</h2>
+      <ul class="basic-plan-options">
+        <li>
+          <label class="basic-plan-option">
+            <input type="radio" name="basic-plan" value="plan1">
+            <img
+              src="{{ section.settings.basic_plan_1_image | img_url: 'medium' }}"
+              alt="{{ section.settings.basic_plan_1_title }}"
+            >
+            <span>{{ section.settings.basic_plan_1_title }}</span>
+          </label>
+        </li>
+        <li>
+          <label class="basic-plan-option">
+            <input type="radio" name="basic-plan" value="plan2">
+            <img
+              src="{{ section.settings.basic_plan_2_image | img_url: 'medium' }}"
+              alt="{{ section.settings.basic_plan_2_title }}"
+            >
+            <span>{{ section.settings.basic_plan_2_title }}</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <!-- データ容量プラン選択 -->
+    <div class="data-plan">
+      <h2>データ容量プランを選択</h2>
+      <ul class="data-plan-options">
+        <!-- デフォルトでは空です。基本プランを選択すると内容が動的に表示されます -->
+      </ul>
+    </div>
+
+    <!-- 補償オプション選択 -->
+    <div class="insurance-option">
+      <h2>補償オプションを選択</h2>
+      <ul class="insurance-option-options">
+        <li>
+          <label class="insurance-option-option">
+            <input type="radio" name="insurance-option" value="{{ section.settings.insurance_product }}" checked>
+            <img src="{{ section.settings.insurance_image | img_url: 'medium' }}" alt="補償パック">
+            <span>補償パック</span>
+          </label>
+        </li>
+        <li>
+          <label class="insurance-option-option">
+            <input type="radio" name="insurance-option" value="none">
+            <span>なし</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <!-- お届けについて -->
+    <div class="delivery-option">
+      <h2>お届けについて</h2>
+      <ul class="delivery-option-options">
+        <li>
+          <label class="delivery-option-option">
+            <input type="radio" name="delivery-option" value="すぐに発送" checked>
+            <span>{{ section.settings.delivery_immediate_title }}</span>
+          </label>
+        </li>
+        <li>
+          <label class="delivery-option-option">
+            <input type="radio" name="delivery-option" value="翌月初にお届け">
+            <span>{{ section.settings.delivery_next_month_title }}</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 台数指定 -->
+    <div class="order-quantity">
+      <h2>ご注文台数</h2>
+      <ul>
+        <li style="width: 150px;">
+          <quantity-input class="quantity cart-quantity">
+            <button class="quantity__button" name="minus" type="button">
+              <span class="visually-hidden">注文台数を減らす</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+                class="icon icon-minus"
+                fill="none"
+                viewBox="0 0 10 2"
+              >
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M.5 1C.5.7.7.5 1 .5h8a.5.5 0 110 1H1A.5.5 0 01.5 1z" fill="currentColor">
+                </path>
+              </svg>
+            </button>
+            <input
+              name="order-quantity"
+              class="quantity__input"
+              type="number"
+              value="1"
+              min="1"
+              max="5"
+              data-min="1"
+              step="1"
+              aria-label="注文台数"
+            >
+            <button class="quantity__button" name="plus" type="button">
+              <span class="visually-hidden">注文台数を増やす</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+                class="icon icon-plus"
+                fill="none"
+                viewBox="0 0 10 10"
+              >
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M1 4.51a.5.5 0 000 1h3.5l.01 3.5a.5.5 0 001-.01V5.5l3.5-.01a.5.5 0 00-.01-1H5.5L5.49.99a.5.5 0 00-1 .01v3.5l-3.5.01H1z" fill="currentColor">
+                </path>
+              </svg>
+            </button>
+          </quantity-input>
+        </li>
+        <li>台</li>
+      </ul>
+    </div>
+
+    <!-- ご注意事項の確認 -->
+    <div class="terms">
+      <h2>ご注意事項の確認</h2>
+      <div class="terms-content">
+        <div class="terms-text rte">{{ shop.terms_of_service.body }}</div>
+        <label class="terms-agree">
+          <input type="checkbox" id="terms-agree">
+          <span>上記確認事項についてすべて同意します。</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- お申し込み前の確認 -->
+    <div class="pre-check">
+      <h2>お申し込み前の確認</h2>
+      <div class="pre-check-content">
+        <div class="pre-check-text rte">{{ section.settings.pre_check_text }}</div>
+        <label class="pre-check-agree">
+          <input type="checkbox" id="pre-check-agree">
+          <span>上記確認事項についてすべて同意します。</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- お申し込みの確認ボタン -->
+    <div class="submit-button">
+      <button type="button" class="btn-apply" disabled>
+        {{ section.settings.button_text }}
+      </button>
+      <div class="error-message" style="display:none; color:red; margin-top:10px;">
+        ご注文には確認事項への同意が必要です
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "申込みフォーム",
+  "settings": [
+    {
+      "type": "header",
+      "content": "基本設定"
+    },
+    {
+      "type": "product",
+      "id": "initial_cost_product",
+      "label": "初期費用商品を選択"
+    },
+    {
+      "type": "product",
+      "id": "rental_device",
+      "label": "レンタル端末商品を選択"
+    },
+    {
+      "type": "color",
+      "id": "selected_border_color",
+      "info": "選択されたアイテムのボーダーカラー",
+      "label": "カラー選択",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "基本プランを選択"
+    },
+    {
+      "type": "product",
+      "id": "basic_plan_1_product",
+      "label": "基本プラン1の商品"
+    },
+    {
+      "type": "image_picker",
+      "id": "basic_plan_1_image",
+      "label": "基本プラン1の画像"
+    },
+    {
+      "type": "text",
+      "id": "basic_plan_1_title",
+      "label": "基本プラン1のタイトル"
+    },
+    {
+      "type": "text",
+      "id": "basic_plan_1_selling_plan_id",
+      "label": "基本プラン1のSelling Plan ID"
+    },
+    {
+      "type": "product",
+      "id": "basic_plan_2_product",
+      "label": "基本プラン2の商品"
+    },
+    {
+      "type": "image_picker",
+      "id": "basic_plan_2_image",
+      "label": "基本プラン2の画像"
+    },
+    {
+      "type": "text",
+      "id": "basic_plan_2_title",
+      "label": "基本プラン2のタイトル"
+    },
+    {
+      "type": "text",
+      "id": "basic_plan_2_selling_plan_id",
+      "label": "基本プラン2のSelling Plan ID"
+    },
+    {
+      "type": "header",
+      "content": "補償オプションを選択"
+    },
+    {
+      "type": "product",
+      "id": "insurance_product",
+      "label": "補償パックの商品"
+    },
+    {
+      "type": "image_picker",
+      "id": "insurance_image",
+      "label": "補償パックの画像"
+    },
+    {
+      "type": "text",
+      "id": "insurance_selling_plan_id",
+      "label": "補償パックのSelling Plan ID"
+    },
+    {
+      "type": "header",
+      "content": "お届けについて"
+    },
+    {
+      "type": "text",
+      "id": "delivery_immediate_title",
+      "label": "すぐに発送のタイトル"
+    },
+    {
+      "type": "text",
+      "id": "delivery_next_month_title",
+      "label": "翌月初にお届けのタイトル"
+    },
+    {
+      "type": "header",
+      "content": "ご注意事項の確認"
+    },
+    {
+      "type": "richtext",
+      "id": "terms_text",
+      "label": "確認事項内容"
+    },
+    {
+      "type": "header",
+      "content": "お申し込み前の確認"
+    },
+    {
+      "type": "richtext",
+      "id": "pre_check_text",
+      "label": "お申し込み前の確認事項内容"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "ボタンテキスト",
+      "default": "お申し込みの確認"
+    }
+  ],
+  "presets": [
+    {
+      "name": "申込みフォーム"
+    }
+  ]
+}
+{% endschema %}

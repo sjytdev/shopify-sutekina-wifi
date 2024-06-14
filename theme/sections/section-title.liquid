@@ -1,0 +1,176 @@
+{{ 'section-section-title.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-title color-{{ section.settings.color_scheme }} gradient{% unless section.settings.full_width %} page-width{% endunless %}">
+  <div class="rich-text content-container {% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+    <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+      <div class="rich-text__blocks {{ section.settings.content_alignment }}">
+        {%- if section.settings.subheading != blank -%}
+          <h3
+            class="rich-text__subheading rte inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: 2;"
+            {% endif %}
+          >
+            {{ section.settings.subheading }}
+          </h3>
+        {%- endif -%}
+        <h2
+          class="rich-text__heading rte inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: 1;"
+          {% endif %}
+        >
+          {{ section.settings.heading }}
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "セクションタイトル",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "ここにタイトルを入力",
+      "label": "タイトルのテキスト"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "h2"
+        },
+        {
+          "value": "h1",
+          "label": "h1"
+        },
+        {
+          "value": "h0",
+          "label": "h0"
+        },
+        {
+          "value": "hxl",
+          "label": "hxl"
+        }
+      ],
+      "default": "h2",
+      "label": "見出しサイズ"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "default": "サブタイトルを入力（未入力は非表示）",
+      "label": "サブタイトルのテキスト"
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.desktop_content_position.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.desktop_content_position.label",
+      "info": "t:sections.rich-text.settings.desktop_content_position.info"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.rich-text.settings.content_alignment.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "カラースキーム",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "default": true,
+      "label": "全幅にする"
+    },
+    {
+      "type": "header",
+      "content": "セクションの余白設定"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "上部余白",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "下部余白",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "セクションタイトル",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

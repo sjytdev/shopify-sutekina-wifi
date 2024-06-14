@@ -60,6 +60,11 @@
                 data-label="{{ 'customer.order.product' | t }}"
               >
                 <div>
+                  {% comment %} IMEI表示 {% endcomment %}
+                  {% if order.metafields.custom.device_id %}
+                    {{ order.metafields.custom.device_id }}
+                  {% endif %}
+
                   {%- if line_item.url != blank -%}
                     <a href="{{ line_item.url }}">{{ line_item.title }}</a>
                   {%- else -%}
@@ -348,6 +353,11 @@
 {
   "name": "t:sections.main-order.name",
   "settings": [
+    {
+      "type": "product",
+      "id": "rental_device",
+      "label": "レンタル端末商品を選択"
+    },
     {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"

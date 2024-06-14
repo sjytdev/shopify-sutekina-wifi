@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "section_title_hjp4KD": {
+      "type": "section-title",
+      "settings": {
+        "heading": "すてきなWi-Fiお申し込みフォーム",
+        "heading_size": "h2",
+        "subheading": "APPLICATION",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "application_form_ziq4B4": {
+      "type": "application-form",
+      "settings": {
+        "initial_cost_product": "initial-cost",
+        "rental_device": "rental-device",
+        "selected_border_color": "#29abe2",
+        "basic_plan_1_product": "sutekina-wifi-binding",
+        "basic_plan_1_image": "shopify:\/\/shop_images\/sutekina_p5.png",
+        "basic_plan_1_title": "縛りありプラン",
+        "basic_plan_1_selling_plan_id": "1148944493",
+        "basic_plan_2_product": "sutekina-wifi-free",
+        "basic_plan_2_image": "shopify:\/\/shop_images\/sutekina_p1.png",
+        "basic_plan_2_title": "縛りなしプラン",
+        "basic_plan_2_selling_plan_id": "1149075565",
+        "insurance_product": "compensation",
+        "insurance_image": "shopify:\/\/shop_images\/sutekina_s3_2x_7dc12d9b-b993-420b-bdfd-ad5a5bde17d5.png",
+        "insurance_selling_plan_id": "1241415789",
+        "delivery_immediate_title": "すぐに発送する",
+        "delivery_next_month_title": "翌月初にお届けする",
+        "terms_text": "<p>テストテストテストテストテスト<\/p><p>テストテストテストテストテスト<\/p><p>テストテストテストテスト<\/p>",
+        "pre_check_text": "<p>テストテストテストテストテストテストテスト<\/p><p>テストテストテストテストテスト<\/p><p>テストテスト<\/p><p>テストテスト<\/p>",
+        "button_text": "お申し込みの確認"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "section_title_hjp4KD",
+    "application_form_ziq4B4",
+    "main"
+  ]
+}

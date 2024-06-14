@@ -1,6 +1,11 @@
+.fixed-image-media {
+  text-align: center;
+}
+
 .fixed-image-media img {
   width: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   backface-visibility: hidden;
   image-rendering: crisp-edges;
   image-rendering: -webkit-optimize-contrast;
@@ -9,20 +14,26 @@
 }
 
 .fixed-image {
-  padding-bottom: calc(10vw + 10px);  /* 三角形の高さを指定 */
   position: relative;
   overflow: hidden;
 }
 
-.fixed-image::before {
+.fixed-image.has-diagonal-background {
+  padding-bottom: calc(10vw + 10px);  /* 三角形の高さを指定 */
+}
+
+.fixed-image.has-diagonal-background::before {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  border-bottom: 10vw solid #fff;  /* 三角を白にする */ 
+  border-bottom: 10vw solid rgb(var(--color-background));  /* 三角を白にする */
   border-left: 100vw solid transparent;
 }
 
+.fixed-image.has-diagonal-background > div{
+  margin-bottom: -5vw;
+}
 
 @media screen and (max-width: 749px) {
   .fixed-image-media img.pc {

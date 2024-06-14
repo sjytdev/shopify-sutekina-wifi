@@ -1,5 +1,21 @@
 {
   "sections": {
+    "1717639366f2263dab": {
+      "type": "apps",
+      "blocks": {
+        "go_sub_subscription_gosub_account_block_9dRC8i": {
+          "type": "shopify:\/\/apps\/go-sub-subscription\/blocks\/gosub-account-block\/87efaa1b-acee-458e-9de2-d43423c133fa",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "go_sub_subscription_gosub_account_block_9dRC8i"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "main": {
       "type": "main-account",
       "settings": {
@@ -9,6 +25,7 @@
     }
   },
   "order": [
+    "1717639366f2263dab",
     "main"
   ]
 }

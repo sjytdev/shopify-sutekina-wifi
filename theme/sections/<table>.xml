@@ -1,0 +1,84 @@
+<table>
+    <tbody>
+        <tr>
+            <th>サイズ</th>
+            <td>126mm x 66mm x 12.6mm</td>
+        </tr>
+        <tr>
+            <th>色</th>
+            <td>ブラック</td>
+        </tr>
+        <tr>
+            <th>重さ</th>
+            <td>148g</td>
+        </tr>
+        <tr>
+            <th>画面サイズ</th>
+            <td>2.4 inch&nbsp;</td>
+        </tr>
+        <tr>
+            <th>解像度</th>
+            <td>QVGA(240*320)</td>
+        </tr>
+        <tr>
+            <th>タッチパネル</th>
+            <td>対応，G+F</td>
+        </tr>
+        <tr>
+            <th>チップセット</th>
+            <td>QUALCOMM QM215</td>
+        </tr>
+        <tr>
+            <th>モデムタイプ</th>
+            <td>デュアルモデム</td>
+        </tr>
+        <tr>
+            <th>FDD-LTE</th>
+            <td>B1/2/3/4/5/7/8/9/12/13/17/18/19/20/25/26/28/66</td>
+        </tr>
+        <tr>
+            <th>TDD-LTE</th>
+            <td>B34/38/39/40/41(194M)</td>
+        </tr>
+        <tr>
+            <th>WCDMA</th>
+            <td>B1/2/4/5/6/8/9/19</td>
+        </tr>
+        <tr>
+            <th>GSM</th>
+            <td>850/900/1800/1900</td>
+        </tr>
+        <tr>
+            <th>最大通信速度</th>
+            <td>DL 150Mbps；UL：50Mbps</td>
+        </tr>
+        <tr>
+            <th>WLAN</th>
+            <td>2.4G; 802.11 b/g/n</td>
+        </tr>
+        <tr>
+            <th>WiFi最大同時接続台数</th>
+            <td>最大:10</td>
+        </tr>
+        <tr>
+            <th>電圧&amp;バッテリー容量</th>
+            <td>3500mAh（typical）/3.8V</td>
+        </tr>
+        <tr>
+            <th>入力(充電)</th>
+            <td>5V/2A</td>
+        </tr>
+        <tr>
+            <th>最大稼働時間</th>
+            <td>12時間</td>
+        </tr>
+        <tr>
+            <th>コネクトタイプ</th>
+            <td>Type-C</td>
+        </tr>
+        <tr>
+            <th>SIMスロット</th>
+            <td>1 Nano SIM</td>
+        </tr>
+    </tbody>
+</table>

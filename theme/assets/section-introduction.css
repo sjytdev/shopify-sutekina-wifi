@@ -1,0 +1,45 @@
+.introduction {
+    display: flex;
+    flex-direction: column;
+}
+
+.introduction table {
+    width: 100%;
+}
+
+.introduction table th {
+    width: 30%;
+}
+
+.introduction table th, .introduction table td {
+    padding: 5px 8px;
+    overflow-wrap: break-word;
+}
+
+
+.introduction__media-wrapper {
+    flex: 1;
+}
+
+.introduction__media-item img{
+    display: block;
+    width: 100%;
+}
+
+.introduction__page-contents {
+    flex: 2;
+}
+
+@media screen and (min-width: 750px) {
+    .introduction {
+        flex-direction: row;
+    }
+
+    .introduction__media-wrapper {
+        width: 33.33%;
+    }
+
+    .introduction__page-contents {
+        width: 66.67%;
+    }
+}

@@ -1,9 +1,23 @@
 {
   "sections": {
+    "section_title_EGE3Jh": {
+      "type": "section-title",
+      "settings": {
+        "heading": "お申し込み内容確認",
+        "heading_size": "h2",
+        "subheading": "confirmation",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "cart-items": {
       "type": "main-cart-items",
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -27,13 +41,14 @@
         "buttons"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "padding_top": 20,
         "padding_bottom": 40
       }
     }
   },
   "order": [
+    "section_title_EGE3Jh",
     "cart-items",
     "cart-footer"
   ]

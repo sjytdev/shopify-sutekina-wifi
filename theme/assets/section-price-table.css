@@ -1,0 +1,312 @@
+.price-table .title {
+    margin: 0;
+}
+
+.price-table.no-heading .title {
+    display: none;
+}
+
+.price-table .title-wrapper-with-link {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 749px) {
+    .price-table .title-wrapper-with-link {
+        margin-bottom: 3rem;
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+    .price-table__title {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+@media screen and (max-width: 989px) {
+    .price-table .page-width {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+.price-table-card__image-wrapper--third-width {
+    width: 33%;
+}
+
+.price-table-card__image-wrapper--half-width {
+    width: 50%;
+}
+
+.price-table-list__item.center .price-table-card__image-wrapper:not(.price-table-card__image-wrapper--full-width),
+.price-table-list__item:only-child {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.price-table .button {
+    margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 750px) {
+    .price-table .button {
+        margin-top: 4rem;
+    }
+}
+
+.price-table-list {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.price-table-list__item:only-child {
+    max-width: 72rem;
+}
+
+.price-table-list__item--empty {
+    display: none;
+}
+
+.price-table:not(.background-none) .price-table-card {
+    background: rgb(var(--color-background));
+    height: 100%;
+}
+
+.price-table .price-table-card {
+    border-radius: 1.5rem;
+    min-height: 440px;
+    height: 100%;
+    box-shadow: 0 3px 15px #f1f1f1;
+    margin: 0px 5px 12px;
+    position: relative;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+/* ブロック内タイトル */
+.price-table-card h3.inline-richtext {
+    margin-bottom: 8px;
+    font-size: 2.5rem;
+    color: #a57e1b;
+    font-weight: bold;
+}
+
+.price-table-card dl {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.price-table-card dl dt {
+    width: 35%;
+    margin-bottom: 10px;
+}
+
+.price-table-card dl dd {
+    width: 50%;
+    background-color: #FAFAFA;
+    margin-bottom: 10px;
+}
+
+.price-table-card table.pricing-plans {
+    width: 100%;
+}
+
+.price-table-card table.pricing-plans thead {
+    background: #f1f1f1;
+}
+
+.price-table-card table.pricing-plans tr {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.price-table-card table.pricing-plans th, table.pricing-plans td {
+    padding: 5px;
+}
+
+.price-table-card table.pricing-plans th {
+
+}
+
+.price-table-card table.pricing-plans td {
+
+}
+
+.price-table-card span.data-vol {
+    font-size: 3rem;
+}
+
+.price-table-card span.data-price {
+    font-size: 3rem;
+}
+
+.price-table-card hr {
+    margin: 2rem 0rem;
+}
+
+.price-table-card .cta-button {
+    margin-top: 30px;
+}
+
+/* ブロック内説明文*/
+.price-table-card .rte {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+/* ブロック内補足 */
+.price-table-card .supplement {
+    font-size: 1.2rem;
+    line-height: 1.2;
+}
+
+.price-table-list h3 {
+    line-height: calc(1 + 0.5 / max(1, var(--font-heading-scale)));
+}
+
+.price-table-list h3,
+.price-table-list p {
+    margin: 0;
+}
+
+.price-table-card-spacing {
+    padding-top: 2.5rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+
+.price-table-card__info> :nth-child(2) {
+    margin-top: 1rem;
+}
+
+.price-table-list {
+    padding: 10px 0 20px;
+}
+
+.price-table-list__item.center .media--adapt,
+.price-table-list__item .media--adapt .price-table-card__image {
+    width: auto;
+}
+
+.price-table-list__item.center .media--adapt img {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media screen and (max-width: 749px) {
+    .price-table-list {
+        margin: 0;
+        width: 100%;
+    }
+
+    .price-table-list:not(.slider) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+    .price-table-list:not(.slider) {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .price-table-list.slider {
+        padding: 0;
+    }
+
+    .price-table-list__item,
+    .grid--4-col-desktop .price-table-list__item {
+        padding-bottom: 0;
+    }
+
+    .background-none .grid--2-col-tablet .price-table-list__item {
+        margin-top: 4rem;
+    }
+}
+
+.background-none .price-table-card-spacing {
+    padding: 0;
+    margin: 0;
+}
+
+.price-table-card__info {
+    padding: 0.5rem 2.5rem;
+}
+
+.background-none .price-table-card__info {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.background-none .slider .price-table-card__info {
+    padding-bottom: 0;
+}
+
+.background-none .price-table-card__image-wrapper+.price-table-card__info {
+    padding-top: 2.5rem;
+}
+
+.background-none .slider .price-table-card__info {
+    padding-left: 0.5rem;
+}
+
+.background-none .slider .price-table-card__image-wrapper+.price-table-card__info {
+    padding-left: 1.5rem;
+}
+
+.background-none .price-table-list:not(.slider) .center .price-table-card__info {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
+
+@media screen and (max-width: 749px) {
+    .background-none .slider .price-table-card__info {
+        padding-bottom: 1rem;
+    }
+
+    .price-table.background-none .slider.slider--mobile {
+        margin-bottom: 0rem;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .background-none .price-table-card__image-wrapper {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+
+    .background-none .price-table-list .price-table-card__info,
+    .background-none .price-table-list:not(.slider) .center .price-table-card__info {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+.price-table-card {
+    position: relative;
+    box-sizing: border-box;
+}
+
+.price-table-card>.price-table-card__image-wrapper--full-width:not(.price-table-card-spacing) {
+    border-top-left-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
+    border-top-right-radius: calc(var(--text-boxes-radius) - var(--text-boxes-border-width));
+    overflow: hidden;
+}
+
+.price-table.background-none .price-table-card {
+    border-radius: 0;
+}
+
+.price-table-card__info .link {
+    text-decoration: none;
+    font-size: inherit;
+    margin-top: 1.5rem;
+}
+
+.price-table-card__info

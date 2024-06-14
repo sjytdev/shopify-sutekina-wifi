@@ -3,6 +3,7 @@
     "main": {
       "type": "main-order",
       "settings": {
+        "rental_device": "rental-device",
         "padding_top": 36,
         "padding_bottom": 72
       }

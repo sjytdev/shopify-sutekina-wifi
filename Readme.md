@@ -39,6 +39,16 @@ shopify theme pull --store=sutekina-wifi.myshopify.com
 shopify theme push
 ```
 
+```
+shopify theme list
+shopify theme delete
+```
+
+## Shopifyコマンド確認
+```
+shopify theme -h
+```
+
 ## Shopifyログイン
 shopifyプレビューサーバー起動時などにログインを求めれた場合
 

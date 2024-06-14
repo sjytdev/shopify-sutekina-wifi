@@ -1,0 +1,290 @@
+{{ 'section-price-table.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .price-table-card.color-scheme-1 {
+    /* カラースキーム1に対するスタイルをここに追加 */
+  }
+  .price-table-card.color-scheme-2 {
+    /* カラースキーム2に対するスタイルをここに追加 */
+  }
+  /* 必要に応じて他のカラースキームも追加 */
+  
+  {%- if section.settings.diagonal_background -%}
+  .price-table.has-diagonal-background::before,
+  .price-table.has-diagonal-background::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0;
+    z-index: 0;
+  }
+  .price-table.has-diagonal-background::before {
+    bottom: 0;
+    left: 0;
+    border-bottom: 10vw solid rgb(var(--color-background));  /* 三角を白にする */
+    border-left: 100vw solid transparent;
+  }
+  .price-table.has-diagonal-background::after {
+    top: 0;
+    left: 0;
+    border-top: 10vw solid rgb(var(--color-background));  /* 上部の三角を白にする */
+    border-right: 100vw solid transparent;
+  }
+  .price-table.has-diagonal-background {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(10vw + 10px);
+    padding-bottom: calc(10vw + 10px);
+  }
+  .price-table.has-diagonal-background > div {
+    margin: -10vw auto;
+    z-index: 1;
+  }
+  {%- endif -%}
+{%- endstyle -%}
+
+{%- liquid
+  assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+  assign show_mobile_slider = false
+  if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
+    assign show_mobile_slider = true
+  endif
+-%}
+
+<div class="price-table color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.diagonal_background %} has-diagonal-background{% endif %}">
+  <div
+    class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    {% if settings.animations_reveal_on_scroll %}
+      data-cascade
+    {% endif %}
+  >
+    <slider-component class="slider-mobile-gutter">
+      <ul
+        class="price-table-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--tablet grid--peek{% endif %}"
+        id="Slider-{{ section.id }}"
+        role="list"
+      >
+        {%- for block in section.blocks -%}
+          <li
+            id="Slide-{{ section.id }}-{{ forloop.index }}"
+            class="price-table-list__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == 'center' %} center{% endif %} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {{ block.shopify_attributes }}
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            <div class="price-table-card content-container">
+              <h3 class="inline-richtext">{{ block.settings.title }}</h3>
+              <dl>
+                <dt>契約期間</dt>
+                <dd>{% if block.settings.contract_period > 0 %}{{ block.settings.contract_period }}年{% else %}なし{% endif %}</dd>
+                <dt>初期費用</dt>
+                <dd>{{ block.settings.initial_cost.selected_or_first_available_variant.price | money }}</dd>
+                <dt>期間内解約違約金</dt>
+                <dd>{{ block.settings.cancellation_fee.selected_or_first_available_variant.price | money }}</dd>
+              </dl>
+              <table class="pricing-plans">
+                <thead>
+                  <tr>
+                    <th>プラン</th>
+                    <th>価格</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for variant in block.settings.product.variants %}
+                  <tr>
+                    <th><span class="data-vol">{{ variant.title | replace: "GB","" }}</span>{%- if variant.title contains "GB" -%}<span class="data-unit">GB</span>{%- endif -%}</th>
+                    <td><span class="data-price">{{ variant.price | money }}</span></td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              <hr>
+              <h4>オプション</h4>
+              <dl>
+                <dt>安心補償パック</dt>
+                <dd>＋ {{ block.settings.insurance.selected_or_first_available_variant.price | money }}</dd>
+              </dl>
+              <div class="cta-button">
+                <a href="{{ block.settings.link_url }}" class="btn-apply">{{ block.settings.link_title }}</a>
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if show_mobile_slider -%}
+        <div class="slider-buttons large-up-hide">
+          <button
+            type="button"
+            class="slider-button slider-button--prev"
+            name="previous"
+            aria-label="{{ 'general.slider.previous_slide' | t }}"
+          >
+            {% render 'icon-caret' %}
+          </button>
+          <div class="slider-counter caption">
+            <span class="slider-counter--current">1</span>
+            <span aria-hidden="true"> / </span>
+            <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+            <span class="slider-counter--total">{{ section.blocks.size }}</span>
+          </div>
+          <button
+            type="button"
+            class="slider-button slider-button--next"
+            name="next"
+            aria-label="{{ 'general.slider.next_slide' | t }}"
+          >
+            {% render 'icon-caret' %}
+          </button>
+        </div>
+      {%- endif -%}
+    </slider-component>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "料金プラン",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "配色",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2,
+      "label": "デスクトップの列数"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1列"
+        },
+        {
+          "value": "2",
+          "label": "2列"
+        }
+      ],
+      "default": "1",
+      "label": "モバイルの列数"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": false,
+      "label": "モバイルでスワイプを有効にする"
+    },
+    {
+      "type": "checkbox",
+      "id": "diagonal_background",
+      "default": false,
+      "label": "斜めの背景を有効にする"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "上部の余白",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "下部の余白",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pricing_block",
+      "name": "プラン",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "タイトル",
+          "default": "プラン名"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "配色",
+          "default": "scheme-1"
+        },
+        {
+          "type": "number",
+          "id": "contract_period",
+          "label": "契約期間"
+        },
+        {
+          "type": "product",
+          "id": "initial_cost",
+          "label": "初期費用"
+        },
+        {
+          "type": "product",
+          "id": "cancellation_fee",
+          "label": "期間内解約違約金"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "対象プラン商品"
+        },
+        {
+          "type": "product",
+          "id": "insurance",
+          "label": "安心補償パック"
+        },
+        {
+          "type": "text",
+          "id": "link_title",
+          "label": "リンクタイトル"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "リンクURL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "料金プランセクション",
+      "category": "セクション"
+    }
+  ]
+}
+{% endschema %}

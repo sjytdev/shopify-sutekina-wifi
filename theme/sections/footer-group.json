@@ -5,19 +5,44 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "image_zhDpXT": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina-wifi_logo_block-wh.png",
+            "image_width": 150,
+            "alignment": ""
+          }
+        },
         "link_list_kE3hy7": {
           "type": "link_list",
           "settings": {
-            "heading": "メニュー",
+            "heading": "",
+            "menu": "footer"
+          }
+        },
+        "link_list_8azMUb": {
+          "type": "link_list",
+          "settings": {
+            "heading": "",
+            "menu": "footer-menu-2"
+          }
+        },
+        "link_list_Jz6z6K": {
+          "type": "link_list",
+          "settings": {
+            "heading": "",
             "menu": "footer"
           }
         }
       },
       "block_order": [
-        "link_list_kE3hy7"
+        "image_zhDpXT",
+        "link_list_kE3hy7",
+        "link_list_8azMUb",
+        "link_list_Jz6z6K"
       ],
       "settings": {
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-5",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,

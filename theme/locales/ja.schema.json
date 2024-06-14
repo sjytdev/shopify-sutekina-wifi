@@ -1164,6 +1164,9 @@
           "info": "width:750px以上の時に表示される画像",
           "label": "デスクトップ／タブレット表示用画像"
         },
+        "max_width": {
+          "label": "最大幅（px）"
+        },
         "image_mobile": {
           "info": "width:749px以下の時に表示される画像（縦長推奨）",
           "label": "モバイル用画像"
@@ -2172,6 +2175,9 @@
     "multicolumn": {
       "name": "マルチカラム",
       "settings": {
+        "num_prefix": {
+          "label": "ナンバーの前に付く文言"
+        },
         "title": {
           "label": "見出し"
         },
@@ -2210,6 +2216,9 @@
           "options__2": {
             "label": "中央"
           }
+        },
+        "section_color_scheme": {
+          "label": "セクションの配色"
         },
         "background_style": {
           "label": "サブ背景",
@@ -2256,6 +2265,9 @@
             },
             "text": {
               "label": "説明"
+            },
+            "supplement": {
+              "label": "補足説明"
             },
             "link_label": {
               "label": "リンクラベル"

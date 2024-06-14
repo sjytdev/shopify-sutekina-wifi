@@ -136,12 +136,28 @@
     "content_for_index": [
 
     ],
+    "blocks": {
+      "15683396631634586217": {
+        "type": "shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b",
+        "disabled": false,
+        "settings": {
+          "button_color": "#f2f2f2",
+          "secondary_color": "#333333",
+          "ternary_color": "#a57e1b",
+          "button_icon": "smiley_face",
+          "button_text": "help",
+          "button_horizontal_position": "bottom_right",
+          "button_vertical_position": "lowest",
+          "greeting_message": ""
+        }
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#ffffff",
+          "background": "#fefefe",
           "background_gradient": "linear-gradient(127deg, rgba(251, 255, 226, 1) 11%, rgba(218, 255, 255, 1) 81%)",
-          "text": "#383838",
+          "text": "#000000",
           "button": "#7c6723",
           "button_label": "#ffffff",
           "secondary_button_label": "#7c6723",
@@ -150,7 +166,7 @@
       },
       "scheme-2": {
         "settings": {
-          "background": "#ffffff",
+          "background": "#fefefe",
           "background_gradient": "",
           "text": "#313131",
           "button": "#a57e1b",
@@ -172,24 +188,35 @@
       },
       "scheme-4": {
         "settings": {
-          "background": "#bebebe",
+          "background": "#ffffff",
           "background_gradient": "",
-          "text": "#ffffff",
+          "text": "#202020",
           "button": "#fcfcfc",
-          "button_label": "#bc5631",
+          "button_label": "#a57e1b",
           "secondary_button_label": "#fcfcfc",
-          "shadow": "#103948"
+          "shadow": "#383838"
         }
       },
       "scheme-5": {
         "settings": {
-          "background": "#18566c",
+          "background": "#7c7c7c",
           "background_gradient": "",
-          "text": "#fcfcfc",
+          "text": "#ffffff",
           "button": "#fcfcfc",
           "button_label": "#18566c",
           "secondary_button_label": "#fcfcfc",
           "shadow": "#103948"
+        }
+      },
+      "scheme-4dbe0f76-4a5f-433e-a434-2d131c29e092": {
+        "settings": {
+          "background": "#ffffff",
+          "background_gradient": "linear-gradient(127deg, rgba(251, 255, 226, 1) 11%, rgba(218, 255, 255, 1) 81%)",
+          "text": "#383838",
+          "button": "#7c6723",
+          "button_label": "#ffffff",
+          "secondary_button_label": "#7c6723",
+          "shadow": "#454545"
         }
       }
     }
