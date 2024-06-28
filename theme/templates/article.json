@@ -16,23 +16,23 @@
             "blog_show_author": false
           }
         },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        },
         "content": {
           "type": "content",
           "settings": {
+          }
+        },
+        "share_WPgfcr": {
+          "type": "share",
+          "settings": {
+            "share_label": "このお知らせをシェアする"
           }
         }
       },
       "block_order": [
         "featured_image",
         "title",
-        "share",
-        "content"
+        "content",
+        "share_WPgfcr"
       ],
       "settings": {
       }

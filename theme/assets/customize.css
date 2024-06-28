@@ -58,7 +58,6 @@ button.btn-apply.disabled, button.btn-apply:disabled {
     background: linear-gradient(170deg, rgba(200, 200, 200, 1) 11%, rgb(150, 150, 150) 81%);
 }
 
-
 .customer.account {
     padding: 105px;
 }
@@ -75,6 +74,9 @@ table.cart-items th {
 
 table.cart-items td {
     border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.1);
+    vertical-align: middle;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 cart-items .cart__items {

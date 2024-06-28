@@ -17,6 +17,8 @@
         "heading": "すてきなWi-Fiの特徴",
         "heading_size": "h2",
         "subheading": "Features",
+        "anchor_text": "features",
+        "diagonal_background": false,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-2",
@@ -105,7 +107,7 @@
       ],
       "settings": {
         "num_prefix": "POINT",
-        "point_color": "#29ABE2",
+        "point_color": "#29abe2",
         "image_width": "full",
         "image_ratio": "adapt",
         "columns_desktop": 3,
@@ -124,6 +126,8 @@
         "heading": "料金プラン",
         "heading_size": "h2",
         "subheading": "Plans",
+        "anchor_text": "plans",
+        "diagonal_background": false,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-2",
@@ -156,7 +160,7 @@
             "color_scheme": "scheme-1",
             "contract_period": 0,
             "initial_cost": "initial-cost",
-            "cancellation_fee": "penalty",
+            "cancellation_fee": "",
             "product": "sutekina-wifi-free",
             "insurance": "compensation",
             "link_title": "申し込む",
@@ -184,6 +188,8 @@
         "heading": "ご利用開始までの流れ",
         "heading_size": "h2",
         "subheading": "Flow",
+        "anchor_text": "flow",
+        "diagonal_background": false,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-2",
@@ -267,6 +273,8 @@
         "heading": "すてきな端末のご紹介",
         "heading_size": "h2",
         "subheading": "Rental Equipment",
+        "anchor_text": "device",
+        "diagonal_background": false,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-2",
@@ -275,12 +283,47 @@
         "padding_bottom": 20
       }
     },
-    "introduction_JikHw9": {
-      "type": "introduction",
+    "multicolumn_xHAD39": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_HtrzaG": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/glocalnet-na01_750x550_85ae1c51-5d47-48bf-86d1-8429c468380f.png",
+            "title": "GLOCALNET NA01",
+            "text": "<p>スペック<\/p>",
+            "supplement": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_YXihaL": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/urocomm-macaroon3_750x550_f48f09f4-1d43-4efb-b76e-455e8c88b4fc.png",
+            "title": "UROCOMM Macaroon 3",
+            "text": "<p>スペック<\/p>",
+            "supplement": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_HtrzaG",
+        "column_YXihaL"
+      ],
       "settings": {
-        "color_scheme": "scheme-2",
-        "product_image": "shopify:\/\/shop_images\/sutekina_GLOCALNET-NA01.jpg",
-        "page": "device-spec",
+        "num_prefix": "DEVICE",
+        "point_color": "#808080",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "section_color_scheme": "scheme-2",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -291,6 +334,8 @@
         "heading": "こんな人にオススメ",
         "heading_size": "h2",
         "subheading": "Recommendation",
+        "anchor_text": "recommend",
+        "diagonal_background": false,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-2",
@@ -305,27 +350,23 @@
         "heading": "お知らせ",
         "heading_size": "h2",
         "subheading": "News",
+        "anchor_text": "news",
+        "diagonal_background": false,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "scheme-2",
         "full_width": true,
         "padding_top": 40,
-        "padding_bottom": 52
+        "padding_bottom": 20
       }
     },
-    "featured_blog_PGP6di": {
-      "type": "featured-blog",
+    "news_posts_dNcrr7": {
+      "type": "news-posts",
       "settings": {
-        "heading": "",
-        "heading_size": "h2",
         "blog": "news",
-        "post_limit": 3,
-        "columns_desktop": 1,
-        "color_scheme": "scheme-2",
-        "show_image": false,
-        "show_date": true,
-        "show_author": false,
-        "show_view_all": true,
+        "news_limit": 5,
+        "view_all_title": "すべてのお知らせを見る",
+        "color_scheme": "scheme-1",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -340,9 +381,9 @@
     "section_title_hjKAxR",
     "multicolumn_dhP3WE",
     "section_title_bA4Ub7",
-    "introduction_JikHw9",
+    "multicolumn_xHAD39",
     "section_title_MYRwqJ",
     "section_title_Hyywth",
-    "featured_blog_PGP6di"
+    "news_posts_dNcrr7"
   ]
 }

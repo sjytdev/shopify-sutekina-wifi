@@ -1,6 +1,19 @@
 {{ 'section-section-title.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
+  #{{ section.settings.anchor_text }} {
+    display: block;
+    padding-top:200px;
+    margin-top:-200px;
+  }
+
+  @media screen and (max-width:480px) {
+    #{{ section.settings.anchor_text }} {
+      padding-top: 100px;
+      margin-top: -100px;
+    }
+  }
+  
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
@@ -12,14 +25,32 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .section-title.has-diagonal-background {
+    position: relative;
+    overflow: hidden;
+    padding-bottom: calc(3vw + 10px);
+    margin-bottom: calc((8vw + 10px) * -1);
+    z-index: -1;
+  }
+
+  .section-title.has-diagonal-background::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: 10vw solid rgb(var(--color-background));
+    border-left: 100vw solid transparent;
+  }
 {%- endstyle -%}
 
-<div class="section-title color-{{ section.settings.color_scheme }} gradient{% unless section.settings.full_width %} page-width{% endunless %}">
+<div class="section-title color-{{ section.settings.color_scheme }} gradient{% unless section.settings.full_width %} page-width{% endunless %}{% if section.settings.diagonal_background %} has-diagonal-background{% endif %}">
   <div class="rich-text content-container {% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
     <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- if section.settings.subheading != blank -%}
           <h3
+            id="{{ section.settings.anchor_text }}" 
             class="rich-text__subheading rte inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
@@ -87,6 +118,17 @@
       "id": "subheading",
       "default": "サブタイトルを入力（未入力は非表示）",
       "label": "サブタイトルのテキスト"
+    },
+    {
+      "type": "text",
+      "id": "anchor_text",
+      "label": "idに使用するアンカーテキスト",
+    },
+    {
+      "type": "checkbox",
+      "id": "diagonal_background",
+      "default": false,
+      "label": "斜めの背景を有効にする"
     },
     {
       "type": "select",

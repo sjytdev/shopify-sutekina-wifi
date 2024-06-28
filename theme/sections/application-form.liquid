@@ -2,100 +2,175 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 {%- unless customer -%}
-{% comment %} <script>
-  window.location.href = '/account/login';
-</script> {% endcomment %}
+    {% comment %}
+    <script>
+        window.location.href = '/account/login';
+    </script>
+    {% endcomment %}
 {%- endunless -%}
 
 {%- style -%}
-  #shopify-section-{{ section.id }} {
-    --selected-border-color: {{ section.settings.selected_border_color }};
-  }
+    #shopify-section-{{ section.id }} {
+        --selected-border-color: {{ section.settings.selected_border_color }};
+    }
 {%- endstyle -%}
 
+{%- liquid
+    assign columns_mobile_int = section.settings.columns_mobile | plus: 0
+    assign show_mobile_slider = false
+    if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
+        assign show_mobile_slider = true
+    endif
+-%}
+
 <script>
-  $(document).ready(function() {
-      // カートをクリアする関数
-      function clearCart() {
-          $.ajax({
-              type: 'POST',
-              url: '/cart/clear.js',
-              success: function() {
-                  console.log('カートをクリアしました');
-                  initializeSelection();
-              },
-              error: function(error) {
-                  console.log('Error clearing cart:', error);
-              }
-          });
-      }
+    $(document).ready(function() {
+        // カートをクリアする関数
+        function clearCart() {
+            $.ajax({
+                type: 'POST',
+                url: '/cart/clear.js',
+                success: function() {
+                    console.log('カートをクリアしました');
+                    initializeSelection();
+                },
+                error: function(error) {
+                    console.log('Error clearing cart:', error);
+                }
+            });
+        }
 
-      // ユーザーがログインしているかどうかを確認する関数
-      function checkLoginStatus() {
-          $.ajax({
-              url: '/account',
-              type: 'GET',
-              success: function(data) {
-                  if ($(data).find('.customer').length === 0) {
-                      // ログインしていない場合、ログインページにリダイレクト
-                      console.log('ログインしていないためログインページにリダイレクト');
-                      window.location.href = '/account/login';
-                  }
-              },
-              error: function(error) {
-                  console.log('Error checking login status:', error);
-              }
-          });
-      }
+        // ユーザーがログインしているかどうかを確認する関数
+        function checkLoginStatus() {
+            $.ajax({
+                url: '/account',
+                type: 'GET',
+                success: function(data) {
+                    if ($(data).find('.customer').length === 0) {
+                        // ログインしていない場合、ログインページにリダイレクト
+                        console.log('ログインしていないためログインページにリダイレクト');
+                        window.location.href = '/account/login';
+                    }
+                },
+                error: function(error) {
+                    console.log('Error checking login status:', error);
+                }
+            });
+        }
 
-      // ページ読み込み時にカートをクリア
-      clearCart();
+        // ページ読み込み時にカートをクリア
+        clearCart();
 
-      // ページ読み込み時にログインステータスを確認
-      checkLoginStatus();
+        // ページ読み込み時にログインステータスを確認
+        checkLoginStatus();
 
-      var plans = {
-          "plan1": {
-              "product": {{ section.settings.basic_plan_1_product | json }},
-              "title": "{{ section.settings.basic_plan_1_title }}",
-              "image": "{{ section.settings.basic_plan_1_image | img_url: 'medium' }}",
-              "variants": {{ section.settings.basic_plan_1_product.variants | json }},
-              "selling_plan_id": "{{ section.settings.basic_plan_1_selling_plan_id }}"
-          },
-          "plan2": {
-              "product": {{ section.settings.basic_plan_2_product | json }},
-              "title": "{{ section.settings.basic_plan_2_title }}",
-              "image": "{{ section.settings.basic_plan_2_image | img_url: 'medium' }}",
-              "variants": {{ section.settings.basic_plan_2_product.variants | json }},
-              "selling_plan_id": "{{ section.settings.basic_plan_2_selling_plan_id }}"
-          }
-      };
+        // 残り日数を計算してオプションを無効化
+        function updateDeliveryOptions() {
+            var cutoffDays = {{ section.settings.delivery_next_month_cutoff_days }};
+            var currentDate = new Date();
+            var currentYear = currentDate.getFullYear();
+            var currentMonth = currentDate.getMonth() + 1;
+            var lastDayOfMonth = new Date(currentYear, currentMonth, 0).getDate();
+            var remainingDays = lastDayOfMonth - currentDate.getDate();
 
-      function updateDataPlanOptions(selectedPlan) {
-          var plan = plans[selectedPlan];
-          var $dataPlanOptions = $('.data-plan-options');
-          $dataPlanOptions.empty();
-          $.each(plan.variants, function(index, variant) {
-              $dataPlanOptions.append(
-                  '<li>' +
-                  '<label class="data-plan-option">' +
-                  '<input type="radio" name="data-plan" value="' + variant.id + '" ' + (index === 0 ? 'checked' : '') + ' />' +
-                  '<span>' + variant.title + ' - ¥' + (variant.price / 100) + '</span>' +
-                  '</label>' +
-                  '</li>'
-              );
-          });
-          $('input[name="data-plan"]:first').prop('checked', true).closest('li').addClass('selected-item');
-          $('input[name="data-plan"]').change(function() {
-              $('input[name="data-plan"]').each(function() {
-                  if ($(this).is(':checked')) {
-                      $(this).closest('li').addClass('selected-item');
-                  } else {
-                      $(this).closest('li').removeClass('selected-item');
-                  }
-              });
-          });
-      }
+            if (remainingDays <= cutoffDays) {
+                $('input[name="delivery-option"][value="翌月初から利用"]').prop('disabled', true).closest('li').addClass('disabled');
+                $('input[name="delivery-option"][value="翌月初から利用"]').closest('li').append('<div class="disabled-overlay">月末の' + cutoffDays + '日前はお申し込みいただけません</div>');
+            }
+        }
+
+        updateDeliveryOptions();
+
+        var plans = {
+            "plan1": {
+                "product": {{ section.settings.basic_plan_1_product | json }},
+                "title": "{{ section.settings.basic_plan_1_title }}",
+                "image": "{{ section.settings.basic_plan_1_product.featured_image | img_url: 'medium' }}",
+                "variants": [
+                {% for variant in section.settings.basic_plan_1_product.variants %}
+                    {
+                    "id": {{ variant.id }},
+                    "title": "{{ variant.title }}",
+                    "price": {{ variant.price }},
+                    "desc": {% capture var_desc %}{% if variant.metafields.custom.data_vol_desc %}{{ variant.metafields.custom.data_vol_desc.value | json }}{% else %}null{% endif %}{% endcapture %}{{ var_desc }},
+                    "color": {% capture var_color %}{% if variant.metafields.custom.data_vol_color %}{{ variant.metafields.custom.data_vol_color.value | json }}{% else %}null{% endif %}{% endcapture %}{{ var_color }}
+                    }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+                ],
+                "selling_plan_id": {
+                    "immediate": "{{ section.settings.basic_plan_1_1_selling_plan_id }}",
+                    "next_month": "{{ section.settings.basic_plan_1_2_selling_plan_id }}"
+                }
+            },
+            "plan2": {
+            "product": {{ section.settings.basic_plan_2_product | json }},
+            "title": "{{ section.settings.basic_plan_2_title }}",
+            "image": "{{ section.settings.basic_plan_2_product.featured_image | img_url: 'medium' }}",
+            "variants": [
+                {% for variant in section.settings.basic_plan_2_product.variants %}
+                {
+                    "id": {{ variant.id }},
+                    "title": "{{ variant.title }}",
+                    "price": {{ variant.price }},
+                    "desc": {% capture var_desc %}{% if variant.metafields.custom.data_vol_desc %}{{ variant.metafields.custom.data_vol_desc.value | json }}{% else %}null{% endif %}{% endcapture %}{{ var_desc }},
+                    "color": {% capture var_color %}{% if variant.metafields.custom.data_vol_color %}{{ variant.metafields.custom.data_vol_color.value | json }}{% else %}null{% endif %}{% endcapture %}{{ var_color }}
+                }{% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            ],
+            "selling_plan_id": {
+                "immediate": "{{ section.settings.basic_plan_2-1_selling_plan_id }}",
+                "next_month": "{{ section.settings.basic_plan_2-2_selling_plan_id }}"
+            }
+        }
+    };
+
+    console.log('Plans:', plans);
+
+    var insuranceSellingPlanIds = {
+        "immediate": "{{ section.settings.insurance_1_selling_plan_id }}",
+        "next_month": "{{ section.settings.insurance_2_selling_plan_id }}"
+    };
+
+    function updateDataPlanOptions(selectedPlan) {
+        var plan = plans[selectedPlan];
+        var $dataPlanOptions = $('.data-plan-options');
+        var variant_price_comma;
+        var data_options_body;
+        var index = 0;
+        $dataPlanOptions.empty();
+        $.each(plan.variants, function(index, variant) {
+            var dataVolDesc = variant.desc ? variant.desc : '商品説明がありません。商品バリエーションのメタフィールドに説明文を入力してください。';
+            var dataVolColor = variant.color ? variant.color : '#333';
+            variant_price_comma = String((variant.price / 100)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' );
+            index = index + 1;
+            console.log('index:', index);
+
+                data_options_body = '<li id="Slide-{{ section.id }}-' + index + '" ' +
+                    'class="application-form__item grid__item{% if section.settings.swipe_on_mobile %} slider__slide{% endif %}{% if section.settings.column_alignment == "center" %} center{% endif %} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="--animation-order: ' + index + '">' +
+                    '<label class="data-plan-option">' +
+                    '<input type="radio" name="data-plan" value="' + variant.id + '" ' + (index === 0 ? 'checked' : '') + ' />' +
+                    '<h3 class="data-vol"><span style="color:' + dataVolColor + '">' + variant.title.replace("GB","") + '</span><small>GB</small></h3>' +
+                    '<h3 class="price"><span class="monthly">月額</span><span style="color:' + dataVolColor + '">' + variant_price_comma + '</span><small>円</small></h3>' +
+                    '<p>' + dataVolDesc + '</p>' +
+                    '</label>' +
+                    '</li>';
+
+                console.log('data_options_body:', data_options_body);
+
+                $dataPlanOptions.append(data_options_body);
+        });
+
+        $('input[name="data-plan"]:first').prop('checked', true).closest('li').addClass('selected-item');
+        $('input[name="data-plan"]').change(function() {
+            $('input[name="data-plan"]').each(function() {
+                if ($(this).is(':checked')) {
+                    $(this).closest('li').addClass('selected-item');
+                } else {
+                    $(this).closest('li').removeClass('selected-item');
+                }
+            });
+        });
+    }
 
       // 初期化
       function initializeSelection() {
@@ -162,13 +237,21 @@
               var selectedDataPlan = $('input[name="data-plan"]:checked').val();
               var productID = plans[selectedBasicPlan].product.id;
               var variantID = selectedDataPlan;
-              var basicPlanSellingPlanId = plans[selectedBasicPlan].selling_plan_id;
               var orderQuantity = $('input[name="order-quantity"]').val();
               var deliveryOption = $('input[name="delivery-option"]:checked').val();
+              var basicPlanSellingPlanId;
+              var insuranceSellingPlanId;
+
+              // お届けオプションに基づいて適切な selling_plan_id を設定
+              if (deliveryOption === 'すぐに発送') {
+                  basicPlanSellingPlanId = plans[selectedBasicPlan].selling_plan_id.immediate;
+                  insuranceSellingPlanId = insuranceSellingPlanIds.immediate;
+              } else if (deliveryOption === '翌月初から利用') {
+                  basicPlanSellingPlanId = plans[selectedBasicPlan].selling_plan_id.next_month;
+                  insuranceSellingPlanId = insuranceSellingPlanIds.next_month;
+              }
 
               var items = [];
-
-              // 下記順序とは逆順になるので注意
 
               // 初期費用
               items.push({
@@ -197,7 +280,7 @@
                   items.push({
                       id: "{{ section.settings.insurance_product.variants.first.id }}",
                       quantity: orderQuantity,
-                      selling_plan: "{{ section.settings.insurance_selling_plan_id }}"
+                      selling_plan: insuranceSellingPlanId
                   });
               }
 
@@ -230,30 +313,32 @@
   });
 </script>
 
-<div class="application-form">
-  <div class="page-width section section-{{ section.id }}-padding">
+<div class="application-form has-diagonal-background">
+  <div class="page-width section section-{{ section.id }}-padding animate--slide-in">
     <!-- 基本プラン選択 -->
     <div class="basic-plan">
       <h2>基本プランを選択</h2>
-      <ul class="basic-plan-options">
-        <li>
+      <ul class="basic-plan-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop">
+        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 1">
           <label class="basic-plan-option">
             <input type="radio" name="basic-plan" value="plan1">
             <img
-              src="{{ section.settings.basic_plan_1_image | img_url: 'medium' }}"
+              src="{{ section.settings.basic_plan_1_product.featured_image | img_url: 'medium' }}"
               alt="{{ section.settings.basic_plan_1_title }}"
             >
-            <span>{{ section.settings.basic_plan_1_title }}</span>
+            <h3 class="title">{{ section.settings.basic_plan_1_title }}</h3>
+            <p>{{ section.settings.basic_plan_1_product.description }}</p>
           </label>
         </li>
-        <li>
+        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 2">
           <label class="basic-plan-option">
             <input type="radio" name="basic-plan" value="plan2">
             <img
-              src="{{ section.settings.basic_plan_2_image | img_url: 'medium' }}"
+              src="{{ section.settings.basic_plan_2_product.featured_image | img_url: 'medium' }}"
               alt="{{ section.settings.basic_plan_2_title }}"
             >
-            <span>{{ section.settings.basic_plan_2_title }}</span>
+            <h3 class="title">{{ section.settings.basic_plan_2_title }}</h3>
+            <p>{{ section.settings.basic_plan_2_product.description }}</p>
           </label>
         </li>
       </ul>
@@ -262,26 +347,73 @@
     <!-- データ容量プラン選択 -->
     <div class="data-plan">
       <h2>データ容量プランを選択</h2>
-      <ul class="data-plan-options">
-        <!-- デフォルトでは空です。基本プランを選択すると内容が動的に表示されます -->
-      </ul>
+      <slider-component class="slider-mobile-gutter">
+        <ul
+          class="data-plan-options contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--tablet grid--peek{% endif %}"
+          id="Slider-{{ section.id }}"
+          role="list"
+        >
+          <!-- デフォルトでは空です。基本プランを選択すると内容が動的に表示されます -->
+        </ul>
+      </slider-component>
     </div>
 
     <!-- 補償オプション選択 -->
     <div class="insurance-option">
       <h2>補償オプションを選択</h2>
-      <ul class="insurance-option-options">
-        <li>
+      <ul class="insurance-option-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop">
+        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 1">
           <label class="insurance-option-option">
             <input type="radio" name="insurance-option" value="{{ section.settings.insurance_product }}" checked>
-            <img src="{{ section.settings.insurance_image | img_url: 'medium' }}" alt="補償パック">
-            <span>補償パック</span>
+            <img src="{{ section.settings.insurance_product.featured_image | img_url: 'medium' }}" alt="補償パック">
+            <h3 class="title">{{ section.settings.insurance_product.title }}</h3>
+            <div>
+              {% assign data = section.settings.insurance_product.metafields.custom.summary.value %}
+              {% for child in data.children %}
+                {% if child.type == 'heading' %}
+                  <h{{ child.level }} class="title{{ child.level }}">{{ child.children[0].value }}</h{{ child.level }}>
+                {% elsif child.type == 'paragraph' %}
+                  <p>
+                    {% for text in child.children %}
+                      {% if text.bold %}
+                        <strong>{{ text.value }}</strong>
+                      {% elsif text.italic %}
+                        <em>{{ text.value }}</em>
+                      {% elsif text.url %}
+                        <a href="{{ text.url }}" target="{{ text.target }}">{{ text.children[0].value }}</a>
+                      {% else %}
+                        {{ text.value }}
+                      {% endif %}
+                    {% endfor %}
+                  </p>
+                {% elsif child.type == 'list' %}
+                  {% if child.listType == 'unordered' %}
+                    <ul>
+                      {% for item in child.children %}
+                        <li>{{ item.children[0].value }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% elsif child.listType == 'ordered' %}
+                    <ol>
+                      {% for item in child.children %}
+                        <li>{{ item.children[0].value }}</li>
+                      {% endfor %}
+                    </ol>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </div>
           </label>
         </li>
-        <li>
+        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 2">
           <label class="insurance-option-option">
             <input type="radio" name="insurance-option" value="none">
-            <span>なし</span>
+            <img
+              src="{{ section.settings.insurance_none_image | img_url: 'medium' }}"
+              alt="{{ section.settings.insurance_none_title }}"
+            >
+            <h3 class="title">{{ section.settings.insurance_none_title }}</h3>
+            <p>{{ section.settings.insurance_none_description }}</p>
           </label>
         </li>
       </ul>
@@ -290,17 +422,28 @@
     <!-- お届けについて -->
     <div class="delivery-option">
       <h2>お届けについて</h2>
-      <ul class="delivery-option-options">
-        <li>
+      <ul class="delivery-option-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop">
+        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 1">
           <label class="delivery-option-option">
             <input type="radio" name="delivery-option" value="すぐに発送" checked>
-            <span>{{ section.settings.delivery_immediate_title }}</span>
+            <img
+              src="{{ section.settings.delivery_immediate_image | img_url: 'medium' }}"
+              alt="{{ section.settings.delivery_immediate_title }}"
+            >
+            <h3 class="title">{{ section.settings.delivery_immediate_title }}</h3>
+            <p>{{ section.settings.delivery_immediate_description }}</p>
           </label>
         </li>
-        <li>
-          <label class="delivery-option-option">
-            <input type="radio" name="delivery-option" value="翌月初にお届け">
-            <span>{{ section.settings.delivery_next_month_title }}</span>
+        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 2">
+          <label class="delivery-option-option disabled">
+            <input type="radio" name="delivery-option" value="翌月初から利用">
+            <img
+              src="{{ section.settings.delivery_next_month_image | img_url: 'medium' }}"
+              alt="{{ section.settings.delivery_next_month_title }}"
+            >
+            <h3 class="title">{{ section.settings.delivery_next_month_title }}</h3>
+            <p>{{ section.settings.delivery_next_month_description }}</p>
+            <div class="disabled-overlay">月末の{{ section.settings.delivery_next_month_cutoff_days }}日前はお申し込みいただけません</div>
           </label>
         </li>
       </ul>
@@ -373,7 +516,7 @@
     <div class="pre-check">
       <h2>お申し込み前の確認</h2>
       <div class="pre-check-content">
-        <div class="pre-check-text rte">{{ section.settings.pre_check_text }}</div>
+        <div class="pre-check-text rte">{{ shop.subscription_policy.body }}</div>
         <label class="pre-check-agree">
           <input type="checkbox" id="pre-check-agree">
           <span>上記確認事項についてすべて同意します。</span>
@@ -428,29 +571,24 @@
       "label": "基本プラン1の商品"
     },
     {
-      "type": "image_picker",
-      "id": "basic_plan_1_image",
-      "label": "基本プラン1の画像"
-    },
-    {
       "type": "text",
       "id": "basic_plan_1_title",
       "label": "基本プラン1のタイトル"
     },
     {
       "type": "text",
-      "id": "basic_plan_1_selling_plan_id",
-      "label": "基本プラン1のSelling Plan ID"
+      "id": "basic_plan_1_1_selling_plan_id",
+      "label": "基本プラン1の「当月開始」Selling Plan ID"
+    },
+    {
+      "type": "text",
+      "id": "basic_plan_1_2_selling_plan_id",
+      "label": "基本プラン1の「翌月開始」Selling Plan ID"
     },
     {
       "type": "product",
       "id": "basic_plan_2_product",
       "label": "基本プラン2の商品"
-    },
-    {
-      "type": "image_picker",
-      "id": "basic_plan_2_image",
-      "label": "基本プラン2の画像"
     },
     {
       "type": "text",
@@ -459,8 +597,13 @@
     },
     {
       "type": "text",
-      "id": "basic_plan_2_selling_plan_id",
-      "label": "基本プラン2のSelling Plan ID"
+      "id": "basic_plan_2-1_selling_plan_id",
+      "label": "基本プラン2の「当月開始」Selling Plan ID"
+    },
+    {
+      "type": "text",
+      "id": "basic_plan_2-2_selling_plan_id",
+      "label": "基本プラン2の「翌月開始」Selling Plan ID"
     },
     {
       "type": "header",
@@ -472,14 +615,29 @@
       "label": "補償パックの商品"
     },
     {
-      "type": "image_picker",
-      "id": "insurance_image",
-      "label": "補償パックの画像"
+      "type": "text",
+      "id": "insurance_1_selling_plan_id",
+      "label": "補償オプションの「当月開始」Selling Plan ID"
     },
     {
       "type": "text",
-      "id": "insurance_selling_plan_id",
-      "label": "補償パックのSelling Plan ID"
+      "id": "insurance_2_selling_plan_id",
+      "label": "補償オプションの「翌月開始」Selling Plan ID"
+    },
+    {
+      "type": "text",
+      "id": "insurance_none_title",
+      "label": "補償オプションなしのタイトル"
+    },
+    {
+      "type": "image_picker",
+      "id": "insurance_none_image",
+      "label": "補償オプションなしの画像"
+    },
+    {
+      "type": "richtext",
+      "id": "insurance_none_description",
+      "label": "補償オプションなしの説明文"
     },
     {
       "type": "header",
@@ -491,27 +649,41 @@
       "label": "すぐに発送のタイトル"
     },
     {
+      "type": "image_picker",
+      "id": "delivery_immediate_image",
+      "label": "すぐに発送の画像"
+    },
+    {
+      "type": "richtext",
+      "id": "delivery_immediate_description",
+      "label": "すぐに発送の説明文"
+    },
+    {
       "type": "text",
       "id": "delivery_next_month_title",
-      "label": "翌月初にお届けのタイトル"
+      "label": "翌月初から利用のタイトル"
     },
     {
-      "type": "header",
-      "content": "ご注意事項の確認"
-    },
-    {
-      "type": "richtext",
-      "id": "terms_text",
-      "label": "確認事項内容"
-    },
-    {
-      "type": "header",
-      "content": "お申し込み前の確認"
+      "type": "image_picker",
+      "id": "delivery_next_month_image",
+      "label": "翌月初から利用の画像"
     },
     {
       "type": "richtext",
-      "id": "pre_check_text",
-      "label": "お申し込み前の確認事項内容"
+      "id": "delivery_next_month_description",
+      "label": "翌月初から利用の説明文"
+    },
+    {
+      "type": "number",
+      "id": "delivery_next_month_cutoff_days",
+      "label": "翌月初から利用を選択不可にする日付（数値、月末から何日前）",
+      "default": 5
+    },
+    {
+      "type": "number",
+      "id": "delivery_next_month_start_day",
+      "label": "翌月初から利用を当月開始のSelling Planで受ける日付（数値）",
+      "default": 1
     },
     {
       "type": "text",

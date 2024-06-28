@@ -93,9 +93,9 @@
                 <dt>契約期間</dt>
                 <dd>{% if block.settings.contract_period > 0 %}{{ block.settings.contract_period }}年{% else %}なし{% endif %}</dd>
                 <dt>初期費用</dt>
-                <dd>{{ block.settings.initial_cost.selected_or_first_available_variant.price | money }}</dd>
+                <dd>{% if block.settings.initial_cost.selected_or_first_available_variant.price %}{{ block.settings.initial_cost.selected_or_first_available_variant.price | money }}{% else %}なし{% endif %}</dd>
                 <dt>期間内解約違約金</dt>
-                <dd>{{ block.settings.cancellation_fee.selected_or_first_available_variant.price | money }}</dd>
+                <dd>{% if block.settings.cancellation_fee.selected_or_first_available_variant.price %}{{ block.settings.cancellation_fee.selected_or_first_available_variant.price | money }}{% else %}なし{% endif %}</dd>
               </dl>
               <table class="pricing-plans">
                 <thead>

@@ -13,6 +13,20 @@
     }
   }
 {%- endstyle -%}
+<script>
+  $(document).ready(function() {
+      $('.gosub-container').each(function() {
+          var container = $(this);
+          if (container.find('.gosub-product-title').text() === '安心補償パック') {
+              container.find('.gosub-cancellation').parent().addClass('highlight');
+          }
+      });
+  });
+</script>
+{%- javascript -%}
+
+
+{%- endjavascript -%}
 
 <div class="customer account section-{{ section.id }}-padding">
   <div>

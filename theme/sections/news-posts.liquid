@@ -1,0 +1,134 @@
+{{ 'section-news-posts.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="news-posts color-{{ section.settings.color_scheme }}">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="news-posts__wrapper news-posts__wrapper--{{ section.settings.image_position }}">
+      {%- if section.settings.news_image -%}
+        <img src="{{ section.settings.news_image | img_url: 'large' }}" class="news-posts__image" alt="お知らせイメージ">
+      {%- endif -%}
+      <div class="news-posts__content">
+        <ul class="news-posts__list">
+          {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+            {%- for article in section.settings.blog.articles limit: section.settings.news_limit -%}
+              <li class="news-posts__item">
+                <span class="news-posts__date">{{ article.published_at | date: "%Y/%m/%d" }}</span>
+                <a href="{{ article.url }}" class="news-posts__title">{{ article.title }}</a>
+              </li>
+            {%- endfor -%}
+          {%- else -%}
+            <li class="news-posts__item">お知らせがありません</li>
+          {%- endif -%}
+        </ul>
+      </div>
+    </div>
+    {%- if section.settings.blog != blank -%}
+        <div class="news-posts__view-all center">
+          <a href="{{ section.settings.blog.url }}" class="button">{{ section.settings.view_all_title }}</a>
+        </div>
+      {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "News Posts",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "ブログの選択"
+    },
+    {
+      "type": "range",
+      "id": "news_limit",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5,
+      "label": "表示するNEWS件数"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "お知らせイメージ画像を表示"
+    },
+    {
+      "type": "image_picker",
+      "id": "news_image",
+      "label": "お知らせイメージ画像"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "お知らせイメージ画像配置",
+      "options": [
+        {
+          "value": "left",
+          "label": "左"
+        },
+        {
+          "value": "right",
+          "label": "右"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "view_all_title",
+      "default": "すべてのニュースを見る",
+      "label": "ブログ一覧ページへのリンクタイトル"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "配色",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "セクションの余白"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "上部余白",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "下部余白",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "ニュース投稿"
+    }
+  ]
+}
+{% endschema %}

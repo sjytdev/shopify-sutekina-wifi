@@ -6,6 +6,8 @@
         "heading": "お申し込み内容確認",
         "heading_size": "h2",
         "subheading": "confirmation",
+        "anchor_text": "",
+        "diagonal_background": false,
         "desktop_content_position": "center",
         "content_alignment": "center",
         "color_scheme": "",

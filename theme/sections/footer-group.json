@@ -26,20 +26,12 @@
             "heading": "",
             "menu": "footer-menu-2"
           }
-        },
-        "link_list_Jz6z6K": {
-          "type": "link_list",
-          "settings": {
-            "heading": "",
-            "menu": "footer"
-          }
         }
       },
       "block_order": [
         "image_zhDpXT",
         "link_list_kE3hy7",
-        "link_list_8azMUb",
-        "link_list_Jz6z6K"
+        "link_list_8azMUb"
       ],
       "settings": {
         "color_scheme": "scheme-5",
