@@ -74,6 +74,7 @@
             var remainingDays = lastDayOfMonth - currentDate.getDate();
 
             if (remainingDays <= cutoffDays) {
+                $('.disabled-overlay').show();
                 $('input[name="delivery-option"][value="翌月初から利用"]').prop('disabled', true).closest('li').addClass('disabled');
                 $('input[name="delivery-option"][value="翌月初から利用"]').closest('li').append('<div class="disabled-overlay">月末の' + cutoffDays + '日前はお申し込みいただけません</div>');
             }
@@ -435,7 +436,7 @@
           </label>
         </li>
         <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 2">
-          <label class="delivery-option-option disabled">
+          <label class="delivery-option-option">
             <input type="radio" name="delivery-option" value="翌月初から利用">
             <img
               src="{{ section.settings.delivery_next_month_image | img_url: 'medium' }}"
@@ -443,7 +444,7 @@
             >
             <h3 class="title">{{ section.settings.delivery_next_month_title }}</h3>
             <p>{{ section.settings.delivery_next_month_description }}</p>
-            <div class="disabled-overlay">月末の{{ section.settings.delivery_next_month_cutoff_days }}日前はお申し込みいただけません</div>
+            <div class="disabled-overlay" style="display:none;">月末の{{ section.settings.delivery_next_month_cutoff_days }}日前はお申し込みいただけません</div>
           </label>
         </li>
       </ul>

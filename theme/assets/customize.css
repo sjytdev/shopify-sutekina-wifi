@@ -10,7 +10,7 @@ ul.list-menu li:last-child a span {
 }
 
 ul.list-menu li:last-child a span::before {
-    content: "＼ 5分で完了 ／";
+    content: "＼ 3分で完了 ／";
     color: #7C6723;
     font-size: 1rem;
     position: absolute;
