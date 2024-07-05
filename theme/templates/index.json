@@ -283,47 +283,45 @@
         "padding_bottom": 20
       }
     },
-    "multicolumn_xHAD39": {
-      "type": "multicolumn",
+    "device_spec_m37ejR": {
+      "type": "device_spec",
       "blocks": {
-        "column_HtrzaG": {
+        "column_riQK3m": {
           "type": "column",
           "settings": {
             "image": "shopify:\/\/shop_images\/glocalnet-na01_750x550_i.png",
             "title": "GLOCALNET NA01",
-            "text": "<p>スペック<\/p>",
-            "supplement": "",
-            "link_label": "",
-            "link": ""
+            "page": "device-spec",
+            "link_label": "設定マニュアル",
+            "link": "#"
           }
         },
-        "column_YXihaL": {
+        "column_qdezjz": {
           "type": "column",
           "settings": {
             "image": "shopify:\/\/shop_images\/urocomm-macaroon3_750x550_i.png",
             "title": "UROCOMM Macaroon 3",
-            "text": "<p>スペック<\/p>",
-            "supplement": "",
-            "link_label": "",
-            "link": ""
+            "page": "urocomm-macaroon-3",
+            "link_label": "設定マニュアル",
+            "link": "#"
           }
         }
       },
       "block_order": [
-        "column_HtrzaG",
-        "column_YXihaL"
+        "column_riQK3m",
+        "column_qdezjz"
       ],
       "settings": {
         "num_prefix": "DEVICE",
-        "point_color": "#808080",
+        "point_color": "#a9a9a9",
         "image_width": "full",
         "image_ratio": "adapt",
         "columns_desktop": 2,
         "column_alignment": "left",
         "background_style": "primary",
         "section_color_scheme": "scheme-2",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -342,6 +340,63 @@
         "full_width": true,
         "padding_top": 40,
         "padding_bottom": 20
+      }
+    },
+    "multicolumn_zyXhEA": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_ckFQRW": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_p4.png",
+            "title": "こんな人1",
+            "text": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。<\/p>",
+            "supplement": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_kBhB7t": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_s4_2x_0b064bc9-c2e7-46e4-800a-0b0c0d9f0260.png",
+            "title": "こんな人2",
+            "text": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。<\/p>",
+            "supplement": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Wwpj3f": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sutekina_p3.png",
+            "title": "こんな人3",
+            "text": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。<\/p>",
+            "supplement": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_ckFQRW",
+        "column_kBhB7t",
+        "column_Wwpj3f"
+      ],
+      "settings": {
+        "num_prefix": "POINT",
+        "point_color": "#efce45",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "section_color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
     "section_title_Hyywth": {
@@ -370,7 +425,7 @@
         "image_position": "left",
         "view_all_title": "すべてのお知らせを見る",
         "color_scheme": "scheme-1",
-        "padding_top": 36,
+        "padding_top": 28,
         "padding_bottom": 36
       }
     }
@@ -384,8 +439,9 @@
     "section_title_hjKAxR",
     "multicolumn_dhP3WE",
     "section_title_bA4Ub7",
-    "multicolumn_xHAD39",
+    "device_spec_m37ejR",
     "section_title_MYRwqJ",
+    "multicolumn_zyXhEA",
     "section_title_Hyywth",
     "news_posts_dNcrr7"
   ]

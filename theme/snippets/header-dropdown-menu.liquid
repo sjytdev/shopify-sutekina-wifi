@@ -82,11 +82,12 @@
         {%- else -%}
           <a
             id="HeaderMenu-{{ link.handle }}"
-            href="{{ link.url }}"
+            href="{{ link.url | prepend: shop.secure_url }}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
               aria-current="page"
             {% endif %}
+            data-url="{{ link.url }}"
           >
             <span
               {%- if link.current %}
@@ -101,3 +102,15 @@
     {%- endfor -%}
   </ul>
 </nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var links = document.querySelectorAll('.header__menu-item[data-url]');
+    links.forEach(function(link) {
+      var url = link.getAttribute('data-url');
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+        link.setAttribute('href', url);
+      }
+    });
+  });
+</script>

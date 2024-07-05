@@ -29,9 +29,11 @@
   <div class="page-width">
 
     <div class="cart__warnings">
-      <h1 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h1>
-      <a href="{{ routes.all_products_collection_url }}" class="button">
-        {{ 'general.continue_shopping' | t }}
+      <img src="{{ section.settings.oops_img | img_url: 'medium' }}" alt="">
+      <h1 class="cart__empty-text" style="font-size:2rem;">プランが選択されていません</h1>
+      <p>お申し込み画面から<br>プランを選択してください</p>
+      <a href="{{ pages.application-form.url }}" class="button">
+        お申し込みはこちら
       </a>
 
       {%- if shop.customer_accounts_enabled and customer == null -%}
@@ -269,6 +271,11 @@
 {
   "name": "t:sections.main-cart-items.name",
   "settings": [
+    {
+      "type": "image_picker",
+      "id": "oops_img",
+      "label": "プラン選択無し時の画像",
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",

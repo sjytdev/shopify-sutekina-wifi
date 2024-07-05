@@ -137,9 +137,15 @@
 
     ],
     "blocks": {
+      "11161734289043474827": {
+        "type": "shopify:\/\/apps\/rt-instant-faq-help-center\/blocks\/app-embed\/42a6a0f1-7775-488e-92d1-ef440cc5a462",
+        "disabled": false,
+        "settings": {
+        }
+      },
       "15683396631634586217": {
         "type": "shopify:\/\/apps\/inbox\/blocks\/chat\/841fc607-4181-4ad1-842d-e24d7f8bad6b",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "button_color": "#f2f2f2",
           "secondary_color": "#333333",

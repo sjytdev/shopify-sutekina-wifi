@@ -31,7 +31,7 @@ http://localhost:9292
 
 ## テーマのダウンロード
 ```
-shopify theme pull --store=sutekina-wifi.myshopify.com
+shopify theme pull
 ```
 
 ## ローカルの編集内容をshopifyのストアに反映させる

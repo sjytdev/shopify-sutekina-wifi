@@ -88,15 +88,25 @@
             {% endif %}
           >
             <div class="price-table-card content-container">
-              <h3 class="inline-richtext">{{ block.settings.title }}</h3>
-              <dl>
-                <dt>契約期間</dt>
-                <dd>{% if block.settings.contract_period > 0 %}{{ block.settings.contract_period }}年{% else %}なし{% endif %}</dd>
-                <dt>初期費用</dt>
-                <dd>{% if block.settings.initial_cost.selected_or_first_available_variant.price %}{{ block.settings.initial_cost.selected_or_first_available_variant.price | money }}{% else %}なし{% endif %}</dd>
-                <dt>期間内解約違約金</dt>
-                <dd>{% if block.settings.cancellation_fee.selected_or_first_available_variant.price %}{{ block.settings.cancellation_fee.selected_or_first_available_variant.price | money }}{% else %}なし{% endif %}</dd>
-              </dl>
+                <div class="price-table-card-header">
+                    <div>
+                        <img
+                            src="{{ block.settings.product.featured_image | img_url: 'medium' }}"
+                            alt="{{ block.settings.product.title }}"
+                        />
+                    </div>
+                    <div>
+                        <h3 class="inline-richtext">{{ block.settings.title }}</h3>
+                        <dl>
+                            <dt>契約期間</dt>
+                            <dd>{% if block.settings.contract_period > 0 %}{{ block.settings.contract_period }}年{% else %}なし{% endif %}</dd>
+                            <dt>初期費用</dt>
+                            <dd>{% if block.settings.initial_cost.selected_or_first_available_variant.price %}{{ block.settings.initial_cost.selected_or_first_available_variant.price | money }}{% else %}なし{% endif %}</dd>
+                            <dt>期間内解約違約金</dt>
+                            <dd>{% if block.settings.cancellation_fee.selected_or_first_available_variant.price %}{{ block.settings.cancellation_fee.selected_or_first_available_variant.price | money }}{% else %}なし{% endif %}</dd>
+                        </dl>
+                    </div>
+                </div>
               <table class="pricing-plans">
                 <thead>
                   <tr>

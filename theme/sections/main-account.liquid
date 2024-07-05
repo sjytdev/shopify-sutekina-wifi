@@ -13,20 +13,6 @@
     }
   }
 {%- endstyle -%}
-<script>
-  $(document).ready(function() {
-      $('.gosub-container').each(function() {
-          var container = $(this);
-          if (container.find('.gosub-product-title').text() === '安心補償パック') {
-              container.find('.gosub-cancellation').parent().addClass('highlight');
-          }
-      });
-  });
-</script>
-{%- javascript -%}
-
-
-{%- endjavascript -%}
 
 <div class="customer account section-{{ section.id }}-padding">
   <div>
@@ -41,115 +27,172 @@
 
   <div>
     <div>
-      <h2>{{ 'customer.orders.title' | t }}</h2>
-
-      {% paginate customer.orders by 20 %}
-        {%- if customer.orders.size > 0 -%}
-          <table role="table" class="order-history">
-            <caption class="visually-hidden">
-              {{ 'customer.orders.title' | t }}
-            </caption>
-            <thead role="rowgroup">
-              <tr role="row">
-                <th id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
-                <th id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
-                <th id="ColumnPayment" scope="col" role="columnheader">{{ 'customer.orders.payment_status' | t }}</th>
-                <th id="ColumnFulfillment" scope="col" role="columnheader">
-                  {{ 'customer.orders.fulfillment_status' | t }}
-                </th>
-                <th id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
-              </tr>
-            </thead>
-            <tbody role="rowgroup">
-              {%- for order in customer.orders -%}
-                <tr role="row">
-                  <td
-                    id="RowOrder"
-                    role="cell"
-                    headers="ColumnOrder"
-                    data-label="{{ 'customer.orders.order_number' | t }}"
-                  >
-                    <a
-                      href="{{ order.customer_url }}"
-                      aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
-                    >
-                      {{ order.name }}
-                    </a>
-                  </td>
-                  <td headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
-                    {{ order.created_at | time_tag: format: 'date' }}
-                  </td>
-                  <td
-                    headers="RowOrder ColumnPayment"
-                    role="cell"
-                    data-label="{{ 'customer.orders.payment_status' | t }}"
-                  >
-                    {{ order.financial_status_label }}
-                  </td>
-                  <td
-                    headers="RowOrder ColumnFulfillment"
-                    role="cell"
-                    data-label="{{ 'customer.orders.fulfillment_status' | t }}"
-                  >
-                    {{ order.fulfillment_status_label }}
-                  </td>
-                  <td headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
-                    {{ order.total_net_amount | money_with_currency }}
-                  </td>
-                </tr>
-              {%- endfor -%}
-            </tbody>
-          </table>
+        <h2>貸出端末一覧</h2>
+        {% if customer.orders.size > 0 %}
+            <table role="table" class="rental-devices" style="margin-bottom:6rem;">
+                <caption class="visually-hidden">
+                    貸出端末一覧
+                </caption>
+                <thead role="rowgroup">
+                    <tr role="row">
+                        <th>注文ID／契約ID</th>
+                        <th>貸出端末名</th>
+                        <th style="text-wrap: nowrap;">台数</th>
+                        <th>IMEI</th>
+                    </tr>
+                </thead>
+                <tbody role="rowgroup">
+                    {% for order in customer.orders %}
+                        {% unless order.cancelled %}
+                            {% if order.tags contains '端末出荷注文' %}
+                                {%- for line_item in order.line_items -%}
+                                    {%- if line_item.title contains "レンタル端末" -%}
+                                        {%- unless line_item.title contains "選択不可" -%}
+                                        <tr role="row">
+                                            <td>
+                                                <a
+                                                    href="{{ order.customer_url }}"
+                                                    aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
+                                                >
+                                                    注文ID：<br>{{ order.name }}<hr>
+                                                    契約ID：<br>#{{ order.metafields.custom.gosub_contract_id.value }}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                {{ line_item.variant.image.src | img_url: '100x100' | img_tag }}<br>
+                                                {{ line_item.variant.title }}
+                                            </td>
+                                            <td>
+                                                {{ line_item.quantity }}<small>台</small>
+                                            </td>
+                                            <td>
+                                                <ul>
+                                                {%- for imei in order.metafields.custom.imei.value -%}
+                                                    <li>{{ imei }}</li>
+                                                {%- endfor -%}
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    {%- endunless -%}
+                                    {%- endif -%}
+                                {%- endfor -%}
+                            {%- endif -%}
+                        {%- endunless -%}
+                    {%- endfor -%}
+                </tbody>
+            </table>
         {%- else -%}
-          <p>{{ 'customer.orders.none' | t }}</p>
-        {%- endif -%}
+            <p>貸出中の端末はありません。</p>
+        {%- endif %}
 
-        {%- if paginate.pages > 1 -%}
-          {%- if paginate.parts.size > 0 -%}
-            <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
-              <ul role="list">
-                {%- if paginate.previous -%}
-                  <li>
-                    <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
-                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-                      </svg>
-                    </a>
-                  </li>
-                {%- endif -%}
-
-                {%- for part in paginate.parts -%}
-                  <li>
-                    {%- if part.is_link -%}
-                      <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                        {{- part.title -}}
-                      </a>
-                    {%- else -%}
-                      {%- if part.title == paginate.current_page -%}
-                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
-                          {{- part.title -}}
-                        </span>
-                      {%- else -%}
-                        <span>{{ part.title }}</span>
-                      {%- endif -%}
-                    {%- endif -%}
-                  </li>
+        <h2>注文履歴一覧</h2>
+        {% paginate customer.orders by 20 %}
+            {%- if customer.orders.size > 0 -%}
+            <table role="table" class="order-history">
+                <caption class="visually-hidden">
+                {{ 'customer.orders.title' | t }}
+                </caption>
+                <thead role="rowgroup">
+                <tr role="row">
+                    <th id="ColumnOrder" scope="col" role="columnheader">{{ 'customer.orders.order_number' | t }}</th>
+                    <th id="ColumnDate" scope="col" role="columnheader">{{ 'customer.orders.date' | t }}</th>
+                    <th id="ColumnPayment" scope="col" role="columnheader">{{ 'customer.orders.payment_status' | t }}</th>
+                    <th id="ColumnFulfillment" scope="col" role="columnheader">
+                    {{ 'customer.orders.fulfillment_status' | t }}
+                    </th>
+                    <th id="ColumnTotal" scope="col" role="columnheader">{{ 'customer.orders.total' | t }}</th>
+                </tr>
+                </thead>
+                <tbody role="rowgroup">
+                {%- for order in customer.orders -%}
+                    <tr role="row">
+                    <td
+                        id="RowOrder"
+                        role="cell"
+                        headers="ColumnOrder"
+                        data-label="{{ 'customer.orders.order_number' | t }}"
+                    >
+                        <a
+                        href="{{ order.customer_url }}"
+                        aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
+                        >
+                        {{ order.name }}
+                        </a>
+                    </td>
+                    <td headers="RowOrder ColumnDate" role="cell" data-label="{{ 'customer.orders.date' | t }}">
+                        {{ order.created_at | time_tag: format: 'date' }}
+                    </td>
+                    <td
+                        headers="RowOrder ColumnPayment"
+                        role="cell"
+                        data-label="{{ 'customer.orders.payment_status' | t }}"
+                    >
+                        {{ order.financial_status_label }}
+                    </td>
+                    <td
+                        headers="RowOrder ColumnFulfillment"
+                        role="cell"
+                        data-label="{{ 'customer.orders.fulfillment_status' | t }}"
+                    >
+                        {{ order.fulfillment_status_label }}
+                    </td>
+                    <td headers="RowOrder ColumnTotal" role="cell" data-label="{{ 'customer.orders.total' | t }}">
+                        {{ order.total_net_amount | money_without_currency }}<small>円</small>
+                    </td>
+                    </tr>
                 {%- endfor -%}
+                </tbody>
+            </table>
+            {%- else -%}
+                <p>{{ 'customer.orders.none' | t }}</p>
+            {%- endif -%}
 
-                {%- if paginate.next -%}
-                  <li>
-                    <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}">
-                      <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-                      </svg>
-                    </a>
-                  </li>
+            {%- if paginate.pages > 1 -%}
+                {%- if paginate.parts.size > 0 -%}
+                    <nav class="pagination" role="navigation" aria-label="{{ 'general.pagination.label' | t }}">
+                        <ul role="list">
+                            {%- if paginate.previous -%}
+                            <li>
+                                <a href="{{ paginate.previous.url }}" aria-label="{{ 'general.pagination.previous' | t }}">
+                                <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                                </svg>
+                                </a>
+                            </li>
+                            {%- endif -%}
+
+                            {%- for part in paginate.parts -%}
+                            <li>
+                                {%- if part.is_link -%}
+                                    <a href="{{ part.url }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                                        {{- part.title -}}
+                                    </a>
+                                    {%- else -%}
+                                    {%- if part.title == paginate.current_page -%}
+                                        <span aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">
+                                        {{- part.title -}}
+                                        </span>
+                                    {%- else -%}
+                                        <span>{{ part.title }}</span>
+                                    {%- endif -%}
+                                {%- endif -%}
+                            </li>
+                            {%- endfor -%}
+
+                            {%- if paginate.next -%}
+                            <li>
+                                <a href="{{ paginate.next.url }}" aria-label="{{ 'general.pagination.next' | t }}">
+                                <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+                                </svg>
+                                </a>
+                            </li>
+                            {%- endif -%}
+                        </ul>
+                    </nav>
                 {%- endif -%}
-              </ul>
-            </nav>
-          {%- endif -%}
-        {%- endif -%}
-      {% endpaginate %}
+            {%- endif -%}
+        {% endpaginate %}
     </div>
 
     <div>

@@ -58,8 +58,32 @@ button.btn-apply.disabled, button.btn-apply:disabled {
     background: linear-gradient(170deg, rgba(200, 200, 200, 1) 11%, rgb(150, 150, 150) 81%);
 }
 
-.customer.account {
+/* .customer.account {
     padding: 105px;
+} */
+
+.customer table.rental-devices td {
+    padding: 1.5rem;
+    vertical-align: middle;
+}
+
+.customer table.rental-devices td hr {
+    margin: .5rem 0;
+    border-color: rgba(var(--color-link), var(--alpha-link));
+}
+
+.customer table.rental-devices td ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.customer table.rental-devices td ul li {
+    line-height: 1;
+    padding: .3rem;
+    margin-bottom: .5rem;
+    border-bottom: 1px solid #f1f1f1;
+    text-align: right;
 }
 
 table.cart-items {

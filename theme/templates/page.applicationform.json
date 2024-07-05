@@ -44,8 +44,6 @@
         "delivery_next_month_description": "<p>ご注文日の当月末1日前に端末をお届け致します。<\/p>",
         "delivery_next_month_cutoff_days": 5,
         "delivery_next_month_start_day": 15,
-        "terms_text": "<p>テストテストテストテストテスト<\/p><p>テストテストテストテストテスト<\/p><p>テストテストテストテスト<\/p>",
-        "pre_check_text": "<p>テストテストテストテストテストテストテスト<\/p><p>テストテストテストテストテスト<\/p><p>テストテスト<\/p><p>テストテスト<\/p>",
         "button_text": "お申し込みの確認"
       }
     },

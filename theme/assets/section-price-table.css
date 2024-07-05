@@ -99,14 +99,34 @@
 }
 
 .price-table-card dl dt {
-    width: 35%;
-    margin-bottom: 10px;
+    width: 55%;
+    margin-bottom: .5rem;
 }
 
 .price-table-card dl dd {
-    width: 50%;
+    width: 45%;
     background-color: #FAFAFA;
-    margin-bottom: 10px;
+    margin-bottom: .5rem;
+    margin-inline-start: 0;
+}
+
+.price-table-card-header {
+    display: flex;
+    margin: .5%;
+}
+
+.price-table-card-header img {
+    width: 100%;
+    border: 1rem solid #f5f5f5;
+}
+
+.price-table-card-header > div:nth-child(1) {
+    width: 32%;
+    margin-right: 3%;
+}
+
+.price-table-card-header > div:nth-child(2) {
+    width: 65%;
 }
 
 .price-table-card table.pricing-plans {
