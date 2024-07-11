@@ -60,16 +60,14 @@
                 data-label="{{ 'customer.order.product' | t }}"
               >
                 <div>
-                  {% comment %} IMEI表示 {% endcomment %}
-                  {% if order.metafields.custom.device_id %}
-                    {{ order.metafields.custom.device_id }}
-                  {% endif %}
-
-                  {%- if line_item.url != blank -%}
-                    <a href="{{ line_item.url }}">{{ line_item.title }}</a>
-                  {%- else -%}
                     <p>{{ line_item.title }}</p>
-                  {%- endif -%}
+                    {%- if line_item.title contains "レンタル端末" -%}
+                        <ul>
+                        {%- for imei in order.metafields.custom.imei.value -%}
+                            <li>IMEI：{{ imei }}</li>
+                        {%- endfor -%}
+                        </ul>
+                    {%- endif -%}
                   {%- assign property_size = line_item.properties | size -%}
                   {%- unless line_item.selling_plan_allocation == null and property_size == 0 -%}
                     <div class="properties">
@@ -119,8 +117,11 @@
                   {%- if line_item.fulfillment -%}
                     <div class="fulfillment">
                       {%- assign created_at = line_item.fulfillment.created_at | time_tag: format: 'date' -%}
-                      <span>{{ 'customer.order.fulfilled_at_html' | t: date: created_at }}</span>
-
+                      {%- if line_item.title contains "レンタル端末" -%}
+                        <span>発送日: {{ created_at }}</span>
+                      {%- else -%}
+                        <span>処理日: {{ created_at }}</span>
+                      {%- endif -%}
                       {%- if line_item.fulfillment.tracking_url -%}
                         <a href="{{ line_item.fulfillment.tracking_url }}">
                           {{ 'customer.order.track_shipment' | t }}
@@ -315,14 +316,14 @@
                 colspan="2"
                 data-label="{{ 'customer.order.total_refunded' | t }}"
               >
-                -{{ order.total_refunded_amount | money_with_currency }}
+                -{{ order.total_refunded_amount | money }}
               </td>
             </tr>
           {%- endif -%}
           <tr role="row">
             <td id="RowTotal" role="rowheader" scope="row" colspan="3">{{ 'customer.order.total' | t }}</td>
             <td headers="RowTotal" role="cell" colspan="2" data-label="{{ 'customer.order.total' | t }}">
-              {{ order.total_net_amount | money_with_currency }}
+              {{ order.total_net_amount | money }}
             </td>
           </tr>
         </tfoot>

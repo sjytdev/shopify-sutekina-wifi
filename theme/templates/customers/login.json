@@ -1,5 +1,52 @@
 {
   "sections": {
+    "image_with_text_A3RPLi": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_yfLWkX": {
+          "type": "heading",
+          "settings": {
+            "heading": "ご利用には<strong>無料ユーザー登録<\/strong>が必要です。",
+            "heading_size": "h2"
+          }
+        },
+        "text_CPk6Jf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>すてきなWi-Fiレンタルサービスのご利用には、お申し込みの前に無料ユーザー登録が必要です。ユーザー登録はお名前とメールアドレスだけですぐ完了します。<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_YRVNNi": {
+          "type": "button",
+          "settings": {
+            "button_label": "無料ユーザー登録",
+            "button_link": "https:\/\/sutekina-wifi.myshopify.com\/account\/register",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_yfLWkX",
+        "text_CPk6Jf",
+        "button_YRVNNi"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/sutekina-wifi-register-img.png",
+        "height": "small",
+        "desktop_image_width": "small",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
     "main": {
       "type": "main-login",
       "settings": {
@@ -10,6 +57,7 @@
     }
   },
   "order": [
+    "image_with_text_A3RPLi",
     "main"
   ]
 }

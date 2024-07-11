@@ -164,7 +164,7 @@
           "background": "#fefefe",
           "background_gradient": "linear-gradient(127deg, rgba(251, 255, 226, 1) 11%, rgba(218, 255, 255, 1) 81%)",
           "text": "#000000",
-          "button": "#7c6723",
+          "button": "#a57e1b",
           "button_label": "#ffffff",
           "secondary_button_label": "#7c6723",
           "shadow": "#454545"
