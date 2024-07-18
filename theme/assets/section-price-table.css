@@ -150,7 +150,7 @@
 }
 
 .price-table-card table.pricing-plans td {
-
+    line-height: 1.2;
 }
 
 .price-table-card span.data-vol {
@@ -159,6 +159,12 @@
 
 .price-table-card span.data-price {
     font-size: 3rem;
+    font-weight: bold;
+}
+
+.price-table-card span.data-unit {
+    font-size: 1.5rem;
+    margin-left: .1rem;
 }
 
 .price-table-card hr {

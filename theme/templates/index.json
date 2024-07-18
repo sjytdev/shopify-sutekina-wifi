@@ -35,7 +35,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/sutekina_p1.png",
             "title": "契約期間の縛り無し",
-            "text": "<p>契約期間の縛りが無いからいつでも解約可能※1<\/p>",
+            "text": "<p>契約期間の縛りが無いからいつでも解約可能<em>※1<\/em><\/p>",
             "supplement": "<p>※１ 毎月15日までの申請で当月末解約・16日以降の申請で翌月末解約となります。最低利用期間は1か月となります。<\/p>",
             "link_label": "",
             "link": ""
@@ -46,7 +46,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/sutekina_p2.png",
             "title": "業界最安級",
-            "text": "<p>●●●●円\/月～から利用可能<\/p>",
+            "text": "<p>1,780円\/月からご利用可能<\/p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -57,7 +57,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/sutekina_p3.png",
             "title": "最短即日発送のスピード対応",
-            "text": "<p>お申込み内容確定後、最短翌営業日にお届け※２<\/p>",
+            "text": "<p>お申込み内容確定後、最短翌営業日にお届け<em>※２<\/em><\/p>",
             "supplement": "<p>※２ 即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌営業日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。<\/p>",
             "link_label": "",
             "link": ""
@@ -68,7 +68,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/sutekina_p4.png",
             "title": "用途に合わせて選べるプラン",
-            "text": "<p>ーーGB、100GB、ーーーGBの中からお好きな容量を選択可能<\/p>",
+            "text": "<p>10GB～300GBの中からお好きな容量を選択可能<\/p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -90,7 +90,7 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/sutekina_p6.png",
             "title": "安心なクラウドSIM",
-            "text": "<p>Softbank\/docomo\/auの中から最適なキャリアに自動接続<\/p>",
+            "text": "<p>Softbank\/docomo\/au\/楽天モバイルの中から最適なキャリアに自動接続<\/p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -206,8 +206,8 @@
           "settings": {
             "image": "shopify:\/\/shop_images\/sutekina_s1_2x_e7ae280d-cc37-4664-9564-8e0125413102.png",
             "title": "<strong>お申し込み手続き<\/strong>",
-            "text": "<p>利用規約・重要事項説明をご確認のうえ、お申し込みフォームにてお申し込み下さい。<\/p><p><br\/>▼ご用意するもの<br\/>クレジットカード<\/p>",
-            "supplement": "<p>※海外発行カード、visaデビット、JCBデビット、au<br\/>WALLET、その他プリペイド式クレジットカードはご利用いただけません。<\/p>",
+            "text": "<p>利用規約・重要事項説明をご確認のうえ、お申し込みフォームにてお申し込み下さい。<br\/><br\/>▼ご用意するもの<br\/>クレジットカード<\/p>",
+            "supplement": "<p>※海外発行カード、デビットカード、その他プリペイド式クレジットカードはご利用いただけません<\/p>",
             "link_label": "",
             "link": ""
           }
@@ -290,20 +290,20 @@
           "type": "column",
           "settings": {
             "image": "shopify:\/\/shop_images\/glocalnet-na01_750x550_i.png",
-            "title": "GLOCALNET NA01",
+            "title": "NA01",
             "page": "device-spec",
             "link_label": "設定マニュアル",
-            "link": "#"
+            "link": "shopify:\/\/pages\/glocalnet-na01-manual"
           }
         },
         "column_qdezjz": {
           "type": "column",
           "settings": {
             "image": "shopify:\/\/shop_images\/urocomm-macaroon3_750x550_i.png",
-            "title": "UROCOMM Macaroon 3",
+            "title": "Macaroon 3",
             "page": "urocomm-macaroon-3",
             "link_label": "設定マニュアル",
-            "link": "#"
+            "link": "shopify:\/\/pages\/urocomm-macaroon-3-manual"
           }
         }
       },
@@ -395,8 +395,8 @@
         "section_color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "section_title_Hyywth": {

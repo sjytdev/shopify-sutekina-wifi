@@ -131,6 +131,37 @@ cart-items .cart__items {
     padding-bottom: 1rem;
 }
 
+.shopify-policy__container {
+    margin-top: 5rem;
+}
+
+.shopify-policy__title h1 {
+    display: none;
+}
+
+.password-caption {
+    text-align: left;
+    font-size: 1.3rem;
+}
+
+.rte em {
+    font-style: normal;
+	font-size: 0.65em;
+	vertical-align: top;
+}
+
+.insurance-option-content {
+    text-align: left;
+    font-size: 1.4rem;
+    line-height: 1.4;
+}
+
+.insurance-option-content small {
+    line-height: 1.2;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
 /* Modal styles */
 #insuranceModal.modal {
     display: none;

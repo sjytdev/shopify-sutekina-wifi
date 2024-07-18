@@ -1,0 +1,76 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "section_title_dL6Bji": {
+      "type": "section-title",
+      "settings": {
+        "heading": "端末詳細／マニュアル",
+        "heading_size": "h2",
+        "subheading": "devices",
+        "anchor_text": "",
+        "diagonal_background": false,
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "device_spec_9YrqCm": {
+      "type": "device_spec",
+      "blocks": {
+        "column_mxXewK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/glocalnet-na01_750x550_i.png",
+            "title": "NA01",
+            "page": "device-spec",
+            "link_label": "設定マニュアル",
+            "link": "shopify:\/\/pages\/glocalnet-na01-manual"
+          }
+        },
+        "column_QhhMBp": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/urocomm-macaroon3_750x550_i.png",
+            "title": "Macaroon 3",
+            "page": "urocomm-macaroon-3",
+            "link_label": "設定マニュアル",
+            "link": "shopify:\/\/pages\/urocomm-macaroon-3-manual"
+          }
+        }
+      },
+      "block_order": [
+        "column_mxXewK",
+        "column_QhhMBp"
+      ],
+      "settings": {
+        "num_prefix": "DEVICE",
+        "point_color": "#29ABE2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "section_color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "section_title_dL6Bji",
+    "device_spec_9YrqCm"
+  ]
+}

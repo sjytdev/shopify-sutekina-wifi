@@ -115,12 +115,21 @@
                   </tr>
                 </thead>
                 <tbody>
-                {% for variant in block.settings.product.variants %}
-                  <tr>
-                    <th><span class="data-vol">{{ variant.title | replace: "GB","" }}</span>{%- if variant.title contains "GB" -%}<span class="data-unit">GB</span>{%- endif -%}</th>
-                    <td><span class="data-price">{{ variant.price | money }}</span></td>
-                  </tr>
-                {% endfor %}
+                  {% for variant in block.settings.product.variants %}
+                    {% assign tax_excluded_price = variant.price | divided_by: 1.1 | round: 0 %}
+                    {% assign tax_included_price = variant.price | money_without_currency %}
+                    <tr>
+                      <th><span class="data-vol">{{ variant.title | replace: "GB","" }}</span>{%- if variant.title contains "GB" -%}<span class="data-unit">GB</span>{%- endif -%}</th>
+                      <td>
+                        <div>
+                          <span class="data-price">{{ tax_excluded_price | money_without_currency }}</span><span class="data-unit">円</span>
+                        </div>
+                        <div>
+                          <small>税込{{ tax_included_price }}円</small>
+                        </div>
+                      </td>
+                    </tr>
+                  {% endfor %}                  
                 </tbody>
               </table>
               <hr>

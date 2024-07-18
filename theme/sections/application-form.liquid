@@ -309,7 +309,7 @@
 
                 if (billing_timming_text) {
                     insuranceItem.properties = {
-                    "billing_timming": billing_timming_text
+                      "次回ご請求": billing_timming_text
                     };
                 }
 
@@ -438,41 +438,8 @@
             <input type="radio" name="insurance-option" value="{{ section.settings.insurance_product }}" checked>
             <img src="{{ section.settings.insurance_product.featured_image | img_url: 'medium' }}" alt="補償パック">
             <h3 class="title">{{ section.settings.insurance_product.title }} ＋{{ section.settings.insurance_product.price | money }}<small>（月額）</small></h3>
-            <div>
-              {% assign data = section.settings.insurance_product.metafields.custom.summary.value %}
-              {% for child in data.children %}
-                {% if child.type == 'heading' %}
-                  <h{{ child.level }} class="title{{ child.level }}">{{ child.children[0].value }}</h{{ child.level }}>
-                {% elsif child.type == 'paragraph' %}
-                  <p>
-                    {% for text in child.children %}
-                      {% if text.bold %}
-                        <strong>{{ text.value }}</strong>
-                      {% elsif text.italic %}
-                        <em>{{ text.value }}</em>
-                      {% elsif text.url %}
-                        <a href="{{ text.url }}" target="{{ text.target }}">{{ text.children[0].value }}</a>
-                      {% else %}
-                        {{ text.value }}
-                      {% endif %}
-                    {% endfor %}
-                  </p>
-                {% elsif child.type == 'list' %}
-                  {% if child.listType == 'unordered' %}
-                    <ul>
-                      {% for item in child.children %}
-                        <li>{{ item.children[0].value }}</li>
-                      {% endfor %}
-                    </ul>
-                  {% elsif child.listType == 'ordered' %}
-                    <ol>
-                      {% for item in child.children %}
-                        <li>{{ item.children[0].value }}</li>
-                      {% endfor %}
-                    </ol>
-                  {% endif %}
-                {% endif %}
-              {% endfor %}
+            <div class="insurance-option-content">
+              {{ section.settings.insurance_product.content }}
             </div>
           </label>
         </li>
