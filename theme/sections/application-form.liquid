@@ -337,52 +337,10 @@
         $('input[name="insurance-option"]:first').prop('checked', true).closest('li').addClass('selected-item');
         $('input[name="delivery-option"]:first').prop('checked', true).closest('li').addClass('selected-item');
         initializeSelection();
-
-        var modal = $('#insuranceModal');
-        var span = $('.close');
-
-        $('input[name="insurance-option"]').change(function() {
-            if ($(this).val() === "none") {
-                modal.show();
-            }
-        });
-
-        $('#confirm-no-insurance').click(function() {
-            modal.hide();
-        });
-
-        $('#cancel-no-insurance').click(function() {
-        console.log('やっぱり安心補償パックを付ける');
-            $('input[name="insurance-option"][value="compensation"]').prop('checked', true).trigger('change');
-            modal.hide();
-        });
-
-        span.click(function() {
-            modal.hide();
-        });
-
-        $(window).click(function(event) {
-            if (event.target == modal[0]) {
-                modal.hide();
-            }
-        });
     });
 </script>
 
 
-
-
-<!-- モーダルHTML -->
-<div id="insuranceModal" class="modal">
-  <div class="modal-content">
-      <img src="{{ section.settings.insurance_none_alert_image | img_url: 'large' }}" alt="補償オプションなしの警告画像">
-      <p>{{ section.settings.insurance_none_alert_message }}</p>
-      <div class="modal-footer">
-          <button type="button" class="btn-apply" id="cancel-no-insurance" style="margin-top:1rem;width: 100%;">やっぱり補償オプションを付ける</button>
-          <button type="button" class="btn-apply grey" style="margin-top:1rem;width: 100%;" id="confirm-no-insurance">補償オプションを付けない</button>
-      </div>
-  </div>
-</div>
 
 <div class="application-form has-diagonal-background">
   <div class="page-width section section-{{ section.id }}-padding animate--slide-in">
@@ -431,31 +389,101 @@
 
     <!-- 補償オプション選択 -->
     <div class="insurance-option">
-      <h2>補償オプションを選択</h2>
-      <ul class="insurance-option-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop">
+        <h2>補償オプションを選択</h2>
+        <ul class="insurance-option-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop">
         <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 1">
-          <label class="insurance-option-option">
+            <label class="insurance-option-option">
             <input type="radio" name="insurance-option" value="{{ section.settings.insurance_product }}" checked>
             <img src="{{ section.settings.insurance_product.featured_image | img_url: 'medium' }}" alt="補償パック">
             <h3 class="title">{{ section.settings.insurance_product.title }} ＋{{ section.settings.insurance_product.price | money }}<small>（月額）</small></h3>
             <div class="insurance-option-content">
-              {{ section.settings.insurance_product.content }}
+                {{ section.settings.insurance_summary }}
             </div>
-          </label>
+            <button type="button" class="btn-apply" onclick="openInsuranceDetailModal()">安心補償パックの詳細</button>
+            </label>
         </li>
         <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 2">
-          <label class="insurance-option-option">
+            <label class="insurance-option-option">
             <input type="radio" name="insurance-option" value="none">
             <img
-              src="{{ section.settings.insurance_none_image | img_url: 'medium' }}"
-              alt="{{ section.settings.insurance_none_title }}"
+                src="{{ section.settings.insurance_none_image | img_url: 'medium' }}"
+                alt="{{ section.settings.insurance_none_title }}"
             >
             <h3 class="title">{{ section.settings.insurance_none_title }}</h3>
             <p>{{ section.settings.insurance_none_description }}</p>
-          </label>
+            </label>
         </li>
-      </ul>
+        </ul>
     </div>
+
+    <!-- 補償パック詳細モーダルHTML -->
+    <div id="insuranceDetailModal" class="modal">
+        <div class="modal-content">
+            <h2>{{ section.settings.insurance_product.title }}について</h2>
+            <p>{{ section.settings.insurance_product.content }}</p>
+            <div class="modal-footer">
+                <button type="button" class="btn-apply grey" style="margin-top:1rem;width: 100%;" onclick="closeInsuranceDetailModal()">閉じる</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 補償パック切り替えモーダルHTML -->
+    <div id="insuranceChangeModal" class="modal">
+        <div class="modal-content">
+            <img src="{{ section.settings.insurance_none_alert_image | img_url: 'large' }}" alt="補償オプションなしの警告画像">
+            <p>{{ section.settings.insurance_none_alert_message }}</p>
+            <div class="modal-footer">
+                <button type="button" class="btn-apply" id="cancel-no-insurance" style="margin-top:1rem;width: 100%;">安心補償パックを付ける</button>
+                <button type="button" class="btn-apply grey" style="margin-top:1rem;width: 100%;" id="confirm-no-insurance">安心補償パックを付けない</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openInsuranceDetailModal() {
+            document.getElementById('insuranceDetailModal').style.display = 'block';
+        }
+    
+        function closeInsuranceDetailModal() {
+            document.getElementById('insuranceDetailModal').style.display = 'none';
+        }
+    
+        function openInsuranceChangeModal() {
+            document.getElementById('insuranceChangeModal').style.display = 'block';
+        }
+    
+        function closeInsuranceChangeModal() {
+            document.getElementById('insuranceChangeModal').style.display = 'none';
+        }
+    
+        var changeModal = document.getElementById('insuranceChangeModal');
+        var detailModal = document.getElementById('insuranceDetailModal');
+        
+        $('input[name="insurance-option"]').change(function() {
+            if ($(this).val() === "none") {
+                openInsuranceChangeModal();
+            }
+        });
+    
+        $('#confirm-no-insurance').click(function() {
+            closeInsuranceChangeModal();
+        });
+    
+        $('#cancel-no-insurance').click(function() {
+            $('input[name="insurance-option"][value="{{ section.settings.insurance_product }}"]').prop('checked', true).trigger('change');
+            closeInsuranceChangeModal();
+        });
+    
+        $(window).click(function(event) {
+            if (event.target == changeModal) {
+                closeInsuranceChangeModal();
+            }
+            if (event.target == detailModal) {
+                closeInsuranceDetailModal();
+            }
+        });
+    </script>
+
 
     <!-- お届けについて -->
     <div class="delivery-option">
@@ -661,6 +689,11 @@
       "type": "product",
       "id": "insurance_product",
       "label": "補償パックの商品"
+    },
+    {
+        "type": "text",
+        "id": "insurance_summary",
+        "label": "補償パック概要のテキスト"
     },
     {
       "type": "text",

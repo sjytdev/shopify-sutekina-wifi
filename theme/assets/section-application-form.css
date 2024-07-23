@@ -179,37 +179,80 @@
     text-align: left;
 }
 
-.application-form .rte h2 {
-    font-size: 2rem;
-    margin: 1rem 0 0.5rem;
-    font-weight: bold;
+/* モーダル */
+.application-form .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.application-form .rte p {
-    font-size: 1.2rem;
+.application-form .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 42rem;
+}
+
+.application-form #insuranceDetailModal .modal-content {
+    width: 50rem;
+    max-width: 95%;
+}
+
+.application-form #insuranceDetailModal .modal-content {
+    text-align: left;
+}
+
+.application-form #insuranceDetailModal h2 {
+    font-size: 2rem;
+    margin: .2rem 0 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.application-form .insurance-option-content , .application-form #insuranceDetailModal {
+    text-align: left;
+    font-size: 1.4rem;
     line-height: 1.4;
 }
 
-.application-form .disabled {
-    opacity: 0.5;
-    pointer-events: none;
-    position: relative;
+.application-form #insuranceDetailModal ul {
+    margin: .5rem 0;
 }
 
-.application-form .disabled-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+.application-form #insuranceDetailModal small {
+    line-height: 1.3;
+    display: inline-block;
+    margin: .2rem 0 .7rem;
+    color: #999;
+}
+
+#insuranceChangeModal img {
     width: 100%;
-    height: 100%;
-    background: rgba(200, 200, 200, 0.15);
-    color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
+}
+
+#insuranceChangeModal .close {
+    color: #aaa;
+    font-size: 28px;
     font-weight: bold;
-    text-align: center;
-    padding: 1rem;
-    border-radius: 1.5rem;
+    position: absolute;
+    right: 7px;
+    top: 0;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+}
+
+#insuranceChangeModal .close:hover,
+#insuranceChangeModal .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
