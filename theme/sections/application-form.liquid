@@ -25,6 +25,7 @@
 
 <script>
     $(document).ready(function() {
+        // カートをクリアする処理
         function clearCart() {
             $.ajax({
                 type: 'POST',
@@ -38,7 +39,8 @@
                 }
             });
         }
-
+    
+        // ログインを確認する処理
         function checkLoginStatus() {
             $.ajax({
                 url: '/account',
@@ -54,9 +56,32 @@
                 }
             });
         }
-
+    
+        // 同意チェックボックスの初期化処理
+        function initializeCheckboxes() {
+            // チェックボックスの要素が存在するか確認
+            var checkInterval = setInterval(function() {
+                if ($('#terms-agree').length > 0 && $('#pre-check-agree').length > 0) {
+                    clearInterval(checkInterval);
+                    
+                    // チェックボックスが存在することを確認してから初期化
+                    $('#terms-agree').prop('checked', false);
+                    $('#pre-check-agree').prop('checked', false);
+                    
+                    // ボタンの状態も連動して更新
+                    $('.submit-button button').prop('disabled', true).addClass('disabled');
+                    $('.error-message').show();
+        
+                    console.log('同意チェックボックスを初期化しました');
+                }
+            }, 100); // 100ミリ秒ごとにチェック
+        }
+        
+        // ページ読み込み時に実行
+        initializeCheckboxes();
         clearCart();
         checkLoginStatus();
+    
 
         function updateDeliveryOptions() {
             var cutoffDays = {{ section.settings.delivery_next_month_cutoff_days }};
@@ -295,7 +320,7 @@
                 
                 // レンタル端末
                 items.push({
-                    id: "{{ section.settings.rental_device.variants.first.id }}",
+                    id: plans[selectedBasicPlan].rental_variant_id, // Basic Planに応じたvariant IDを使用
                     quantity: orderQuantity,
                     properties: {
                         "発送タイミング": deliveryOptionText

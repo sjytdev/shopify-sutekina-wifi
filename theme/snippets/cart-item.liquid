@@ -68,14 +68,15 @@
     <td class="cart-item__totals right medium-hide large-up-hide">
     {%- render 'loading-spinner' -%}
     <div class="cart-item__price-wrapper">
-        {%- if item.variant.price != item.final_line_price -%}
+        {%- assign line_price = item.variant.price | times: item.quantity -%}
+        {%- if line_price != item.final_line_price -%}
         <dl class="cart-item__discounted-prices">
             <dt class="visually-hidden">
             {{ 'products.product.price.regular_price' | t }}
             </dt>
             <dd>
             <s class="cart-item__old-price price price--end">
-                {{ item.variant.price | money }}
+                {{ item.variant.price | times: item.quantity | money }}
             </s>
             </dd>
             <dt class="visually-hidden">
@@ -86,7 +87,7 @@
             </dd>
         </dl>
         <p class="next-month-price">
-            <small>次回ご請求額：</small> {{ item.variant.price | money }}
+            <small>次回ご請求額：</small> {{ item.variant.price | times: item.quantity | money }}
         </p>
         {%- else -%}
         <span class="price price--end">
@@ -116,14 +117,15 @@
     <td class="cart-item__totals right small-hide">
     {%- render 'loading-spinner' -%}
     <div class="cart-item__price-wrapper">
-        {%- if item.variant.price != item.final_line_price -%}
+        {%- assign line_price = item.variant.price | times: item.quantity -%}
+        {%- if line_price != item.final_line_price -%}
         <dl class="cart-item__discounted-prices">
             <dt class="visually-hidden">
             {{ 'products.product.price.regular_price' | t }}
             </dt>
             <dd>
             <s class="cart-item__old-price price price--end">
-                {{ item.variant.price | money }}
+                {{ item.variant.price | times: item.quantity | money }}
             </s>
             </dd>
             <dt class="visually-hidden">
@@ -134,7 +136,7 @@
             </dd>
         </dl>
         <p class="next-month-price">
-            <small>次回ご請求額：</small> {{ item.variant.price | money }}
+            <small>次回ご請求額：</small> {{ item.variant.price | times: item.quantity | money }}
         </p>
         {%- else -%}
         <span class="price price--end">
