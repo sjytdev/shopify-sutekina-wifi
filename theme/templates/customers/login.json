@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_with_text_A3RPLi": {
@@ -6,14 +15,14 @@
         "heading_yfLWkX": {
           "type": "heading",
           "settings": {
-            "heading": "ご利用には<strong>無料ユーザー登録<\/strong>が必要です。",
+            "heading": "ご利用には<strong>無料ユーザー登録</strong>が必要です。",
             "heading_size": "h2"
           }
         },
         "text_CPk6Jf": {
           "type": "text",
           "settings": {
-            "text": "<p>すてきなWi-Fiレンタルサービスのご利用には、お申し込みの前に無料ユーザー登録が必要です。ユーザー登録はお名前とメールアドレスだけですぐ完了します。<\/p>",
+            "text": "<p>すてきなWi-Fiレンタルサービスのご利用には、お申し込みの前に無料ユーザー登録が必要です。ユーザー登録はお名前とメールアドレスだけですぐ完了します。</p>",
             "text_style": "body"
           }
         },
@@ -21,7 +30,7 @@
           "type": "button",
           "settings": {
             "button_label": "無料ユーザー登録",
-            "button_link": "https:\/\/sutekina-wifi.myshopify.com\/account\/register",
+            "button_link": "https://sutekina-wifi.myshopify.com/account/register",
             "button_style_secondary": false
           }
         }
@@ -32,8 +41,8 @@
         "button_YRVNNi"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/sutekina-wifi-register-img.png",
-        "height": "small",
+        "image": "shopify://shop_images/sutekina-wifi-register-img.png",
+        "height": "adapt",
         "desktop_image_width": "small",
         "layout": "text_first",
         "desktop_content_position": "middle",

@@ -7,7 +7,39 @@
 .application-form h2 {
     font-size: 2rem;
     margin: 8rem 0 4rem;
-    font-weight: bold;
+}
+
+.application-form h2.app__heading {
+    border: 1px solid #ccc;
+    border-radius: 10rem;
+    display: inline-block;
+    padding: .5rem 2rem .7rem;
+    margin: 6rem 0 2rem;
+    line-height: 1;
+}
+
+.application-form h2.app__heading.top {
+    margin-top: 10rem;
+}
+
+@media screen and (max-width: 749px) {
+    .application-form h2.app__heading.top {
+        margin-top: 6rem;
+    }
+}
+
+.application-form span.swipe-comment {
+    font-size: 1.2rem;
+    color: #9b8d08;
+    display: block;
+    margin: 0;
+}
+
+.application-form ul.basic-plan-options,
+.application-form ul.data-plan-options,
+.application-form ul.insurance-option-options,
+.application-form ul.delivery-option-options {
+    padding: 10px 0 20px;
 }
 
 .application-form ul li label {
@@ -81,6 +113,14 @@
     vertical-align: baseline;
 }
 
+.application-form ul li label h3.price small.tax-inc-price {
+    margin-left: 0px;
+    margin-top: 0px;
+    font-size: 1rem;
+    color: #666;
+    display: block;
+}
+
 .application-form ul li label p {
     font-size: 1.4rem;
     line-height: 1.4;
@@ -107,30 +147,10 @@
     display: none;
 }
 
-.application-form ul li .video-background {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* 背景として表示 */
-}
-
-.application-form ul li.selected-item .video-background {
-    display: block;
-}
-
 .application-form ul li.selected-item {
     position: relative;
     overflow: hidden;
     border-color: var(--selected-border-color); /* 選択されたときにボーダーの色を変更 */
-}
-
-.application-form ul li.selected-item video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 
@@ -159,6 +179,7 @@
     justify-content: center;
     -webkit-align-items: center;
     align-items: center;
+    padding-inline-start: 0px;
 }
 
 .application-form .order-quantity li {
@@ -175,8 +196,18 @@
     height: 200px;
     overflow-y: scroll;
     padding: 6px 2rem;
-    margin: 0 auto;
+    margin: 0 auto 1rem;
     text-align: left;
+}
+
+.application-form .rte h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    font-weight: bold;
+}
+
+label.terms-agree, label.pre-check-agree {
+    font-weight: bold;
 }
 
 /* モーダル */
@@ -199,6 +230,7 @@
     padding: 20px;
     border: 1px solid #888;
     width: 42rem;
+    max-width: 90%;
 }
 
 .application-form #insuranceDetailModal .modal-content {
@@ -217,10 +249,23 @@
     text-align: center;
 }
 
-.application-form .insurance-option-content , .application-form #insuranceDetailModal {
-    text-align: left;
+.application-form .insurance-option-content {
+    text-align: center;
     font-size: 1.4rem;
     line-height: 1.4;
+}
+
+.application-form .insurance-option-content p.insurance-option-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 .5rem;
+}
+
+.application-form .insurance-option-content p.insurance-option-caution {
+    color: #9b8d08;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 .5rem;
 }
 
 .application-form #insuranceDetailModal ul {
@@ -255,4 +300,19 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+@media screen and (max-width: 749px) {
+    .data-plan-options.grid--peek .grid__item {
+            min-width: 60%;
+        }
+    .application-form .rte {
+        width: 100%;
+    }
+
+    .application-form .rte h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        font-weight: bold;
+    }
 }

@@ -115,6 +115,26 @@ table.cart-items {
     margin: 2rem auto;
 }
 
+@media screen and (max-width: 749px) {
+    table.cart-items {
+        width: 100%;
+    }
+
+    table.cart-items td {
+        border-bottom:none !important;
+        padding:0 !important;
+    }
+
+    td.cart-item__quantity::before {
+        content: "×";
+    }
+
+    .cart-item {
+        gap: 2rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+}
+
 table.cart-items th {
     border-bottom: 0.2rem solid rgba(var(--color-foreground), 0.5);
 }

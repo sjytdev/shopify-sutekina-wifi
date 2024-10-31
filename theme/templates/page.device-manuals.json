@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -30,21 +39,21 @@
         "column_mxXewK": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/glocalnet-na01_750x550_i.png",
+            "image": "shopify://shop_images/glocalnet-na01_750x550_i.png",
             "title": "NA01",
             "page": "device-spec",
             "link_label": "設定マニュアル",
-            "link": "shopify:\/\/pages\/glocalnet-na01-manual"
+            "link": "shopify://pages/glocalnet-na01-manual"
           }
         },
         "column_QhhMBp": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/urocomm-macaroon3_750x550_i.png",
+            "image": "shopify://shop_images/urocomm-macaroon3_750x550_i.png",
             "title": "Macaroon 3",
             "page": "urocomm-macaroon-3",
             "link_label": "設定マニュアル",
-            "link": "shopify:\/\/pages\/urocomm-macaroon-3-manual"
+            "link": "shopify://pages/urocomm-macaroon-3-manual"
           }
         }
       },

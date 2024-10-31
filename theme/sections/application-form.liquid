@@ -131,14 +131,16 @@
         function updateDataPlanOptions(selectedPlan) {
             var plan = plans[selectedPlan];
             var $dataPlanOptions = $('.data-plan-options');
-            var variant_price_comma;
+            var tax_excluded_price;
+            var tax_included_price;
             var data_options_body;
             var index = 0;
             $dataPlanOptions.empty();
             $.each(plan.variants, function(index, variant) {
                 var dataVolDesc = variant.desc ? variant.desc : '商品説明がありません。商品バリエーションのメタフィールドに説明文を入力してください。';
                 var dataVolColor = variant.color ? variant.color : '#333';
-                variant_price_comma = String((variant.price / 100)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' );
+                tax_excluded_price = String((variant.price / 1.1 / 100).toFixed(0)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' );
+                tax_included_price = String((variant.price / 100)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,' );
                 index = index + 1;
 
                 data_options_body = '<li id="Slide-{{ section.id }}-' + index + '" ' +
@@ -146,7 +148,8 @@
                     '<label class="data-plan-option">' +
                     '<input type="radio" name="data-plan" value="' + variant.id + '" ' + (index === 0 ? 'checked' : '') + ' />' +
                     '<h3 class="data-vol"><span style="color:' + dataVolColor + '">' + variant.title.replace("GB","") + '</span><small>GB</small></h3>' +
-                    '<h3 class="price"><span class="monthly">月額</span><span style="color:' + dataVolColor + '">' + variant_price_comma + '</span><small>円</small></h3>' +
+                    '<h3 class="price"><span class="monthly">月額</span><span style="color:' + dataVolColor + '">' + tax_excluded_price + '</span><small>円</small>' +
+                    '<small class="tax-inc-price">税込' + tax_included_price + '円</small></h3>' +
                     '<p>' + dataVolDesc + '</p>' +
                     '</label>' +
                     '</li>';
@@ -346,58 +349,68 @@
   <div class="page-width section section-{{ section.id }}-padding animate--slide-in">
     <!-- 基本プラン選択 -->
     <div class="basic-plan">
-      <h2>基本プランを選択</h2>
-      <ul class="basic-plan-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop">
-        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 1">
-          <label class="basic-plan-option">
-            <input type="radio" name="basic-plan" value="plan1">
-            <img
-              src="{{ section.settings.basic_plan_1_product.featured_image | img_url: 'medium' }}"
-              alt="{{ section.settings.basic_plan_1_title }}"
-            >
-            <h3 class="title">{{ section.settings.basic_plan_1_title }}</h3>
-            <p>{{ section.settings.basic_plan_1_product.description }}</p>
-          </label>
-        </li>
-        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 2">
-          <label class="basic-plan-option">
-            <input type="radio" name="basic-plan" value="plan2">
-            <img
-              src="{{ section.settings.basic_plan_2_product.featured_image | img_url: 'medium' }}"
-              alt="{{ section.settings.basic_plan_2_title }}"
-            >
-            <h3 class="title">{{ section.settings.basic_plan_2_title }}</h3>
-            <p>{{ section.settings.basic_plan_2_product.description }}</p>
-          </label>
-        </li>
-      </ul>
+      <h2 class="app__heading top">基本プランを選択</h2>
+      <slider-component class="slider-mobile-gutter">
+        <ul class="basic-plan-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop slider slider--tablet grid--peek">
+          <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 1">
+            <label class="basic-plan-option">
+              <input type="radio" name="basic-plan" value="plan1">
+              <img
+                src="{{ section.settings.basic_plan_1_product.featured_image | img_url: 'medium' }}"
+                alt="{{ section.settings.basic_plan_1_title }}"
+              >
+              <h3 class="title">{{ section.settings.basic_plan_1_title }}</h3>
+              <p>{{ section.settings.basic_plan_1_product.description }}</p>
+            </label>
+          </li>
+          <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 2">
+            <label class="basic-plan-option">
+              <input type="radio" name="basic-plan" value="plan2">
+              <img
+                src="{{ section.settings.basic_plan_2_product.featured_image | img_url: 'medium' }}"
+                alt="{{ section.settings.basic_plan_2_title }}"
+              >
+              <h3 class="title">{{ section.settings.basic_plan_2_title }}</h3>
+              <p>{{ section.settings.basic_plan_2_product.description }}</p>
+            </label>
+          </li>
+        </ul>
+        <div class="slider-buttons large-up-hide">
+          <span class="swipe-comment">◀ スワイプしてプランを選択してください ▶</span>
+        </div>
+      </slider-component>
     </div>
 
     <!-- データ容量プラン選択 -->
     <div class="data-plan">
-      <h2>データ容量プランを選択</h2>
+      <h2 class="app__heading">データ容量プランを選択</h2>
       <slider-component class="slider-mobile-gutter">
         <ul
-          class="data-plan-options contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--tablet grid--peek{% endif %}"
+          class="data-plan-options contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop slider slider--tablet grid--peek"
           id="Slider-{{ section.id }}"
           role="list"
         >
           <!-- デフォルトでは空です。基本プランを選択すると内容が動的に表示されます -->
         </ul>
+        <div class="slider-buttons large-up-hide">
+          <span class="swipe-comment">◀ スワイプしてプランを選択してください ▶</span>
+        </div>
       </slider-component>
     </div>
 
     <!-- 補償オプション選択 -->
     <div class="insurance-option">
-        <h2>補償オプションを選択</h2>
-        <ul class="insurance-option-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop">
+        <h2 class="app__heading">補償オプションを選択</h2>
+        <slider-component class="slider-mobile-gutter">
+        <ul class="insurance-option-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop slider slider--tablet grid--peek">
         <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 1">
             <label class="insurance-option-option">
             <input type="radio" name="insurance-option" value="{{ section.settings.insurance_product }}" checked>
             <img src="{{ section.settings.insurance_product.featured_image | img_url: 'medium' }}" alt="補償パック">
-            <h3 class="title">{{ section.settings.insurance_product.title }} ＋{{ section.settings.insurance_product.price | money }}<small>（月額）</small></h3>
+            <h3 class="title">{{ section.settings.insurance_product.title }}に加入する</h3>
             <div class="insurance-option-content">
-                {{ section.settings.insurance_summary }}
+              <p class="insurance-option-price">月額：＋{{ section.settings.insurance_product.price | divided_by: 1.1 | round: 0 | money_without_currency }}円<small>（税込{{ section.settings.insurance_product.price | money_without_currency }}円）</small></p>
+              {{ section.settings.insurance_summary }}
             </div>
             <button type="button" class="btn-apply" onclick="openInsuranceDetailModal()">安心補償パックの詳細</button>
             </label>
@@ -410,10 +423,17 @@
                 alt="{{ section.settings.insurance_none_title }}"
             >
             <h3 class="title">{{ section.settings.insurance_none_title }}</h3>
-            <p>{{ section.settings.insurance_none_description }}</p>
+            <div class="insurance-option-content">
+              <p class="insurance-option-caution">≪ ご注意ください ≫</p>
+              {{ section.settings.insurance_none_description }}
+            </div>
             </label>
         </li>
         </ul>
+        <div class="slider-buttons large-up-hide">
+          <span class="swipe-comment">◀ スワイプしてプランを選択してください ▶</span>
+        </div>
+      </slider-component>
     </div>
 
     <!-- 補償パック詳細モーダルHTML -->
@@ -487,37 +507,42 @@
 
     <!-- お届けについて -->
     <div class="delivery-option">
-      <h2>お届けについて</h2>
-      <ul class="delivery-option-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop">
-        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 1">
-          <label class="delivery-option-option">
-            <input type="radio" name="delivery-option" value="すぐに発送" checked>
-            <img
-              src="{{ section.settings.delivery_immediate_image | img_url: 'medium' }}"
-              alt="{{ section.settings.delivery_immediate_title }}"
-            >
-            <h3 class="title">{{ section.settings.delivery_immediate_title }}</h3>
-            <p>{{ section.settings.delivery_immediate_description }}</p>
-          </label>
-        </li>
-        <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 2">
-          <label class="delivery-option-option">
-            <input type="radio" name="delivery-option" value="翌月初から利用">
-            <img
-              src="{{ section.settings.delivery_next_month_image | img_url: 'medium' }}"
-              alt="{{ section.settings.delivery_next_month_title }}"
-            >
-            <h3 class="title">{{ section.settings.delivery_next_month_title }}</h3>
-            <p>{{ section.settings.delivery_next_month_description }}</p>
-            <div class="disabled-overlay" style="display:none;">月末の{{ section.settings.delivery_next_month_cutoff_days }}日前はお申し込みいただけません</div>
-          </label>
-        </li>
-      </ul>
+      <h2 class="app__heading">お届けについて</h2>
+        <slider-component class="slider-mobile-gutter">
+        <ul class="delivery-option-options contains-content-container grid grid--1-col-tablet-down grid--2-col-desktop slider slider--tablet grid--peek">
+          <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 1">
+            <label class="delivery-option-option">
+              <input type="radio" name="delivery-option" value="すぐに発送" checked>
+              <img
+                src="{{ section.settings.delivery_immediate_image | img_url: 'medium' }}"
+                alt="{{ section.settings.delivery_immediate_title }}"
+              >
+              <h3 class="title">{{ section.settings.delivery_immediate_title }}</h3>
+              <p>{{ section.settings.delivery_immediate_description }}</p>
+            </label>
+          </li>
+          <li class="application-form__item grid__item slider__slide scroll-trigger animate--slide-in" style="--animation-order: 2">
+            <label class="delivery-option-option">
+              <input type="radio" name="delivery-option" value="翌月初から利用">
+              <img
+                src="{{ section.settings.delivery_next_month_image | img_url: 'medium' }}"
+                alt="{{ section.settings.delivery_next_month_title }}"
+              >
+              <h3 class="title">{{ section.settings.delivery_next_month_title }}</h3>
+              <p>{{ section.settings.delivery_next_month_description }}</p>
+              <div class="disabled-overlay" style="display:none;">月末の{{ section.settings.delivery_next_month_cutoff_days }}日前はお申し込みいただけません</div>
+            </label>
+          </li>
+        </ul>
+        <div class="slider-buttons large-up-hide">
+          <span class="swipe-comment">◀ スワイプしてプランを選択してください ▶</span>
+        </div>
+      </slider-component>
     </div>
 
     <!-- 台数指定 -->
     <div class="order-quantity">
-      <h2>ご注文台数</h2>
+      <h2 class="app__heading">ご注文台数</h2>
       <ul>
         <li style="width: 150px;">
           <quantity-input class="quantity cart-quantity">
@@ -568,7 +593,7 @@
 
     <!-- ご注意事項の確認 -->
     <div class="terms">
-      <h2>ご注意事項の確認</h2>
+      <h2 class="app__heading">ご注意事項の確認</h2>
       <div class="terms-content">
         <div class="terms-text rte">{{ shop.terms_of_service.body }}</div>
         <label class="terms-agree">
@@ -580,7 +605,7 @@
 
     <!-- お申し込み前の確認 -->
     <div class="pre-check">
-      <h2>お申し込み前の確認</h2>
+      <h2 class="app__heading">お申し込み前の確認</h2>
       <div class="pre-check-content">
         <div class="pre-check-text rte">{{ shop.subscription_policy.body }}</div>
         <label class="pre-check-agree">

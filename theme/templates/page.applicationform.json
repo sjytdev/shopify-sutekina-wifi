@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "section_title_hjp4KD": {
@@ -37,16 +46,16 @@
         "insurance_1_selling_plan_id": "1241415789",
         "insurance_2_selling_plan_id": "1267564653",
         "insurance_none_title": "安心補償パックに加入しない",
-        "insurance_none_image": "shopify:\/\/shop_images\/no-insurance_pimg.png",
-        "insurance_none_description": "<p><strong>＜ご注意ください＞<\/strong><br\/>※安心補償パック未加入で破損・水没などにより、端末交換を行う場合には機器損害金として22,000円(税込)がかかります。<\/p>",
-        "insurance_none_alert_image": "shopify:\/\/shop_images\/insurance-none_alert_img.png",
-        "insurance_none_alert_message": "<p>補償内容：破損\/故障\/水濡れ\/紛失\/盗難\/バッテリーの劣化時に端末無償交換<\/p>",
+        "insurance_none_image": "shopify://shop_images/no-insurance_pimg.png",
+        "insurance_none_description": "<p>安心補償パック未加入で破損・水没などにより、端末交換を行う場合には機器損害金として22,000円(税込)がかかります。</p>",
+        "insurance_none_alert_image": "shopify://shop_images/insurance-none_alert_img.png",
+        "insurance_none_alert_message": "<p>補償内容：破損/故障/水濡れ/紛失/盗難/バッテリーの劣化時に端末無償交換</p>",
         "delivery_immediate_title": "すぐに発送する",
-        "delivery_immediate_image": "shopify:\/\/shop_images\/immediate_pimg.png",
-        "delivery_immediate_description": "<p><strong>すぐに発送させていただきます。<\/strong><br\/>※天候や交通状況によって遅れが生じる場合もございます。※土日祝日は発送業務を行っておりません。<\/p>",
+        "delivery_immediate_image": "shopify://shop_images/immediate_pimg.png",
+        "delivery_immediate_description": "<p><strong>すぐに発送させていただきます。</strong><br/>※天候や交通状況によって遅れが生じる場合もございます。※土日祝日は発送業務を行っておりません。</p>",
         "delivery_next_month_title": "翌月初から利用する",
-        "delivery_next_month_image": "shopify:\/\/shop_images\/next-month_pimg.png",
-        "delivery_next_month_description": "<p><strong>ご注文日の翌月月初に端末をお届け致します<\/strong><br\/>※天候や交通規制などの状況により、遅れが発生する場合がございます。<\/p>",
+        "delivery_next_month_image": "shopify://shop_images/next-month_pimg.png",
+        "delivery_next_month_description": "<p><strong>ご注文日の翌月月初に端末をお届け致します</strong><br/>※天候や交通規制などの状況により、遅れが発生する場合がございます。</p>",
         "delivery_immediate_to_next_month_days": 3,
         "delivery_next_month_cutoff_days": 5,
         "delivery_next_month_start_day": 15,

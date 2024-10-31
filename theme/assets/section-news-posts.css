@@ -1,66 +1,102 @@
 .news-posts {
-    width: 80vw;
-    margin: 0 auto;
-    text-align: center;
-  }
+  width: 80vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.news-posts__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.news-posts__wrapper--left .news-posts__image {
+  order: -1;
+  margin-right: 2rem;
+}
+
+
+.news-posts__wrapper--right .news-posts__image {
+  margin-left: 5rem;
+}
+
+.news-posts__image {
+  width: 20vw;
+}
+
+.news-posts__content {
+  flex-grow: 1;
+}
+
+.news-posts__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-posts__item {
+  text-align: left;
+  margin-bottom: 1rem;
+  border-bottom: 1px dotted #ccc;
+  padding: 1rem 0;
+}
+
+.news-posts__date {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #767676;
+  margin-right: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-right: 1px solid #ccc;
+  padding: 0 2rem;
+}
   
+.news-posts__title {
+  font-size: 1.5rem;
+  color: #000;
+  text-decoration: none;
+}
+
+.news-posts__title:hover {
+  text-decoration: underline;
+}
+
+.news-posts__view-all {
+  margin-top: 4rem;
+}
+  
+
+@media screen and (max-width: 749px) {
   .news-posts__wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    display: block;
   }
   
   .news-posts__wrapper--left .news-posts__image {
-    order: -1;
-    margin-right: 2rem;
+    width: 60vw;
+    margin: 0 auto;
   }
-  
-  .news-posts__wrapper--right .news-posts__image {
-    margin-left: 5rem;
-  }
-  
-  .news-posts__image {
-    width: 20vw;
-}
-  
-  .news-posts__content {
-    flex-grow: 1;
-  }
-  
-  .news-posts__list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
+
   .news-posts__item {
     text-align: left;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
     border-bottom: 1px dotted #ccc;
-    padding: 1rem 0;
+    padding: .5rem 0;
+    line-height: 1.5;
+  }
+
+  .news-posts__date {
+    display: block;
+    font-size: 1rem;
+    color: #767676;
+    margin-right: 0;
+    margin-bottom: 0.2rem;
+    border-right: none;
+    padding: 0;
   }
   
-  .news-posts__date {
-    display: inline-block;
-    font-size: 1.2rem;
-    color: #767676;
-    margin-right: 1.5rem;
-    margin-bottom: 0.5rem;
-    border-right: 1px solid #ccc;
-    padding: 0 2rem;
-}
-  
   .news-posts__title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #000;
     text-decoration: none;
   }
-  
-  .news-posts__title:hover {
-    text-decoration: underline;
-  }
-  
-  .news-posts__view-all {
-    margin-top: 4rem;
-  }
-  
+}

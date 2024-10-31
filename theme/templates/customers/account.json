@@ -1,10 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "1717639366f2263dab": {
       "type": "apps",
       "blocks": {
         "go_sub_subscription_gosub_account_block_9dRC8i": {
-          "type": "shopify:\/\/apps\/go-sub-subscription\/blocks\/gosub-account-block\/87efaa1b-acee-458e-9de2-d43423c133fa",
+          "type": "shopify://apps/go-sub-subscription/blocks/gosub-account-block/87efaa1b-acee-458e-9de2-d43423c133fa",
           "settings": {
           }
         }

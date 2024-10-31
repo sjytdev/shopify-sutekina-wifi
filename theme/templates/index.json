@@ -1,11 +1,20 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "fixed_image_8A6rPx": {
       "type": "fixed-image",
       "settings": {
-        "image": "shopify:\/\/shop_images\/sw_main-visual.png",
+        "image": "shopify://shop_images/sw_main-visual.png",
         "max_width": 1400,
-        "image_mobile": "shopify:\/\/shop_images\/sw_main-visual_sp.png",
+        "image_mobile": "shopify://shop_images/sw_main-visual_sp.png",
         "wide_type": true,
         "diagonal_background": true,
         "color_scheme": "scheme-1"
@@ -33,10 +42,10 @@
         "column_d6B4Cj": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_p1.png",
+            "image": "shopify://shop_images/sutekina_p1.png",
             "title": "契約期間の縛り無し",
-            "text": "<p>契約期間の縛りが無いからいつでも解約可能<em>※1<\/em><\/p>",
-            "supplement": "<p>※１ 毎月15日までの申請で当月末解約・16日以降の申請で翌月末解約となります。最低利用期間は1か月となります。<\/p>",
+            "text": "<p>契約期間の縛りが無いからいつでも解約可能<em>※1</em></p>",
+            "supplement": "<p>※１ 毎月15日までの申請で当月末解約・16日以降の申請で翌月末解約となります。最低利用期間は1か月となります。</p>",
             "link_label": "",
             "link": ""
           }
@@ -44,9 +53,9 @@
         "column_hqArMg": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_p2.png",
+            "image": "shopify://shop_images/sutekina_p2.png",
             "title": "業界最安級",
-            "text": "<p>1,780円\/月からご利用可能<\/p>",
+            "text": "<p>月額1,618円（税込1,780円）/月の業界最安級価格からご利用可能</p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -55,10 +64,10 @@
         "column_QihNUm": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_p3.png",
+            "image": "shopify://shop_images/sutekina_p3.png",
             "title": "最短即日発送のスピード対応",
-            "text": "<p>お申込み内容確定後、最短翌営業日にお届け<em>※２<\/em><\/p>",
-            "supplement": "<p>※２ 即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌営業日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。<\/p>",
+            "text": "<p>お申込み内容確定後、最短翌営業日にお届け<em>※２</em></p>",
+            "supplement": "<p>※２ 即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌営業日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。</p>",
             "link_label": "",
             "link": ""
           }
@@ -66,9 +75,9 @@
         "column_BUFfwK": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_p4.png",
+            "image": "shopify://shop_images/sutekina_p4.png",
             "title": "用途に合わせて選べるプラン",
-            "text": "<p>10GB～300GBの中からお好きな容量を選択可能<\/p>",
+            "text": "<p>10GB～300GBの中からお好きな容量を選択可能</p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -77,9 +86,9 @@
         "column_7yrRhz": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_p5.png",
+            "image": "shopify://shop_images/sutekina_p5.png",
             "title": "安心の補償サポート",
-            "text": "<p>故障に備えた安心保障パックをご用意<\/p>",
+            "text": "<p>故障に備えた安心保障パックをご用意</p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -88,9 +97,9 @@
         "column_6dBWCf": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_p6.png",
+            "image": "shopify://shop_images/sutekina_p6.png",
             "title": "安心なクラウドSIM",
-            "text": "<p>Softbank\/docomo\/au\/楽天モバイルの中から最適なキャリアに自動接続<\/p>",
+            "text": "<p>Softbank/docomo/au/楽天モバイルの中から最適なキャリアに自動接続</p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -150,7 +159,7 @@
             "product": "sutekina-wifi-binding",
             "insurance": "compensation",
             "link_title": "申し込む",
-            "link_url": "shopify:\/\/pages\/application-form"
+            "link_url": "shopify://pages/application-form"
           }
         },
         "pricing_block_4GmcFY": {
@@ -164,7 +173,7 @@
             "product": "sutekina-wifi-free",
             "insurance": "compensation",
             "link_title": "申し込む",
-            "link_url": "shopify:\/\/pages\/application-form"
+            "link_url": "shopify://pages/application-form"
           }
         }
       },
@@ -176,7 +185,7 @@
         "color_scheme": "",
         "columns_desktop": 2,
         "columns_mobile": "1",
-        "swipe_on_mobile": false,
+        "swipe_on_mobile": true,
         "diagonal_background": true,
         "padding_top": 40,
         "padding_bottom": 40
@@ -204,10 +213,10 @@
         "column_QPwAAJ": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_s1_2x_e7ae280d-cc37-4664-9564-8e0125413102.png",
-            "title": "<strong>お申し込み手続き<\/strong>",
-            "text": "<p>利用規約・重要事項説明をご確認のうえ、お申し込みフォームにてお申し込み下さい。<br\/><br\/>▼ご用意するもの<br\/>クレジットカード<\/p>",
-            "supplement": "<p>※海外発行カード、デビットカード、その他プリペイド式クレジットカードはご利用いただけません<\/p>",
+            "image": "shopify://shop_images/sutekina_s1_2x_e7ae280d-cc37-4664-9564-8e0125413102.png",
+            "title": "<strong>お申し込み手続き</strong>",
+            "text": "<p>利用規約・重要事項説明をご確認のうえ、お申し込みフォームにてお申し込み下さい。<br/><br/>▼ご用意するもの<br/>クレジットカード</p>",
+            "supplement": "<p>※海外発行カード、デビットカード、その他プリペイド式クレジットカードはご利用いただけません</p>",
             "link_label": "",
             "link": ""
           }
@@ -215,10 +224,10 @@
         "column_nKXxjw": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_s2_2x_c736b91d-1271-4526-8495-7d3e64fa7dd6.png",
-            "title": "<strong>お受け取り<\/strong>",
-            "text": "<p>お申込み処理確定後すぐに端末発送の準備に入り、最短で即日発送いたします。<\/p>",
-            "supplement": "<p>※即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。<\/p>",
+            "image": "shopify://shop_images/sutekina_s2_2x_c736b91d-1271-4526-8495-7d3e64fa7dd6.png",
+            "title": "<strong>お受け取り</strong>",
+            "text": "<p>お申込み処理確定後すぐに端末発送の準備に入り、最短で即日発送いたします。</p>",
+            "supplement": "<p>※即日発送は、平日の14時までにお申込み手続きを完了頂いたお客様に限ります。お申込み手続きの完了が14時を回ってしまった場合は、翌日の発送となります。また、土・日・祝は発送を行っておりませんので、翌営業日の発送となりますので予めご了承ください。</p>",
             "link_label": "",
             "link": ""
           }
@@ -226,9 +235,9 @@
         "column_UMYgXX": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_s3_2x_7dc12d9b-b993-420b-bdfd-ad5a5bde17d5.png",
-            "title": "<strong>端末の設定<\/strong>",
-            "text": "<p>同封の設定ガイドに沿って利用設定をおこないます。<\/p><p>設定ガイドに沿って利用設定を行えば、カンタンに利用設定が完了します。<br\/><br\/>万が一、お届け時に端末が故障していた場合や初期不良だった場合には、サポートセンターまでご連絡ください。<\/p>",
+            "image": "shopify://shop_images/sutekina_s3_2x_7dc12d9b-b993-420b-bdfd-ad5a5bde17d5.png",
+            "title": "<strong>端末の設定</strong>",
+            "text": "<p>同封の設定ガイドに沿って利用設定をおこないます。</p><p>設定ガイドに沿って利用設定を行えば、カンタンに利用設定が完了します。<br/><br/>万が一、お届け時に端末が故障していた場合や初期不良だった場合には、サポートセンターまでご連絡ください。</p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -237,9 +246,9 @@
         "column_N6wAhw": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_s4_2x_0b064bc9-c2e7-46e4-800a-0b0c0d9f0260.png",
-            "title": "<strong>ご利用開始<\/strong>",
-            "text": "<p>快適なネット環境をお楽しみください。<\/p>",
+            "image": "shopify://shop_images/sutekina_s4_2x_0b064bc9-c2e7-46e4-800a-0b0c0d9f0260.png",
+            "title": "<strong>ご利用開始</strong>",
+            "text": "<p>快適なネット環境をお楽しみください。</p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -289,21 +298,21 @@
         "column_riQK3m": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/glocalnet-na01_750x550_i.png",
+            "image": "shopify://shop_images/glocalnet-na01_750x550_i.png",
             "title": "NA01",
             "page": "device-spec",
             "link_label": "設定マニュアル",
-            "link": "shopify:\/\/pages\/glocalnet-na01-manual"
+            "link": "shopify://pages/glocalnet-na01-manual"
           }
         },
         "column_qdezjz": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/urocomm-macaroon3_750x550_i.png",
+            "image": "shopify://shop_images/urocomm-macaroon3_750x550_i.png",
             "title": "Macaroon 3",
             "page": "urocomm-macaroon-3",
             "link_label": "設定マニュアル",
-            "link": "shopify:\/\/pages\/urocomm-macaroon-3-manual"
+            "link": "shopify://pages/urocomm-macaroon-3-manual"
           }
         }
       },
@@ -328,6 +337,7 @@
     },
     "section_title_MYRwqJ": {
       "type": "section-title",
+      "disabled": true,
       "settings": {
         "heading": "こんな人にオススメ",
         "heading_size": "h2",
@@ -348,9 +358,9 @@
         "column_ckFQRW": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_p4.png",
+            "image": "shopify://shop_images/sutekina_p4.png",
             "title": "こんな人1",
-            "text": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。<\/p>",
+            "text": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。</p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -359,9 +369,9 @@
         "column_kBhB7t": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_s4_2x_0b064bc9-c2e7-46e4-800a-0b0c0d9f0260.png",
+            "image": "shopify://shop_images/sutekina_s4_2x_0b064bc9-c2e7-46e4-800a-0b0c0d9f0260.png",
             "title": "こんな人2",
-            "text": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。<\/p>",
+            "text": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。</p>",
             "supplement": "",
             "link_label": "",
             "link": ""
@@ -370,10 +380,10 @@
         "column_Wwpj3f": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/sutekina_p3.png",
+            "image": "shopify://shop_images/sutekina_p3.png",
             "title": "こんな人3",
-            "text": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。<\/p>",
-            "supplement": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。<\/p>",
+            "text": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。説明文を入力してください。</p>",
+            "supplement": "<p>説明文を入力してください。説明文を入力してください。説明文を入力してください。</p>",
             "link_label": "",
             "link": ""
           }
@@ -384,6 +394,7 @@
         "column_kBhB7t",
         "column_Wwpj3f"
       ],
+      "disabled": true,
       "settings": {
         "num_prefix": "POINT",
         "point_color": "#efce45",
@@ -421,7 +432,7 @@
         "blog": "news",
         "news_limit": 5,
         "show_image": true,
-        "news_image": "shopify:\/\/shop_images\/announce_img.png",
+        "news_image": "shopify://shop_images/announce_img.png",
         "image_position": "left",
         "view_all_title": "すべてのお知らせを見る",
         "color_scheme": "scheme-1",

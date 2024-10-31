@@ -35,10 +35,10 @@
                 </caption>
                 <thead role="rowgroup">
                     <tr role="row">
-                        <th>注文ID／契約ID</th>
-                        <th>貸出端末名</th>
-                        <th style="text-wrap: nowrap;">台数</th>
-                        <th>IMEI</th>
+                        <th scope="col" role="columnheader">注文ID／契約ID</th>
+                        <th scope="col" role="columnheader">貸出端末名</th>
+                        <th scope="col" role="columnheader" style="text-wrap: nowrap;">台数</th>
+                        <th scope="col" role="columnheader">IMEI</th>
                     </tr>
                 </thead>
                 <tbody role="rowgroup">
@@ -49,7 +49,12 @@
                                     {%- if line_item.title contains "レンタル端末" -%}
                                         {%- unless line_item.title contains "選択不可" -%}
                                         <tr role="row">
-                                            <td>
+                                            <td
+                                                id="RowOrder"
+                                                role="cell"
+                                                headers="ColumnOrder"
+                                                data-label="注文ID／契約ID"
+                                            >
                                                 <a
                                                     href="{{ order.customer_url }}"
                                                     aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}"
@@ -58,14 +63,29 @@
                                                     契約ID：<br>#{{ order.metafields.custom.gosub_contract_id.value }}
                                                 </a>
                                             </td>
-                                            <td>
+                                            <td
+                                                id="RowOrder"
+                                                role="cell"
+                                                headers="ColumnOrder"
+                                                data-label="貸出端末名"
+                                            >
                                                 {{ line_item.variant.image.src | img_url: '100x100' | img_tag }}<br>
                                                 {{ line_item.variant.title }}
                                             </td>
-                                            <td>
+                                            <td
+                                                id="RowOrder"
+                                                role="cell"
+                                                headers="ColumnOrder"
+                                                data-label="台数"
+                                            >
                                                 {{ line_item.quantity }}<small>台</small>
                                             </td>
-                                            <td>
+                                            <td
+                                                id="RowOrder"
+                                                role="cell"
+                                                headers="ColumnOrder"
+                                                data-label="IMEI"
+                                            >
                                                 <ul>
                                                 {%- for imei in order.metafields.custom.imei.value -%}
                                                     <li>{{ imei }}</li>

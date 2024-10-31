@@ -101,9 +101,23 @@
                             <dt>契約期間</dt>
                             <dd>{% if block.settings.contract_period > 0 %}{{ block.settings.contract_period }}年{% else %}なし{% endif %}</dd>
                             <dt>初期費用</dt>
-                            <dd>{% if block.settings.initial_cost.selected_or_first_available_variant.price %}{{ block.settings.initial_cost.selected_or_first_available_variant.price | money }}{% else %}なし{% endif %}</dd>
+                            <dd>
+                              {% if block.settings.initial_cost.selected_or_first_available_variant.price %}
+                                {{ block.settings.initial_cost.selected_or_first_available_variant.price | divided_by: 1.1 | round: 0 | money_without_currency }}円
+                                <span class="tax-inc-price">税込{{ block.settings.initial_cost.selected_or_first_available_variant.price | money_without_currency }}円</span>
+                              {% else %}
+                                なし
+                              {% endif %}
+                            </dd>
                             <dt>期間内解約違約金</dt>
-                            <dd>{% if block.settings.cancellation_fee.selected_or_first_available_variant.price %}{{ block.settings.cancellation_fee.selected_or_first_available_variant.price | money }}{% else %}なし{% endif %}</dd>
+                            <dd>
+                              {% if block.settings.cancellation_fee.selected_or_first_available_variant.price %}
+                                {{ block.settings.cancellation_fee.selected_or_first_available_variant.price | divided_by: 1.1 | round: 0 | money_without_currency }}円
+                                <span class="tax-inc-price">税込{{ block.settings.cancellation_fee.selected_or_first_available_variant.price | money_without_currency }}円</span>
+                              {% else %}
+                                なし
+                              {% endif %}
+                            </dd>
                         </dl>
                     </div>
                 </div>
@@ -111,7 +125,7 @@
                 <thead>
                   <tr>
                     <th>プラン</th>
-                    <th>価格</th>
+                    <th>月額</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -136,7 +150,10 @@
               <h4>オプション</h4>
               <dl>
                 <dt>安心補償パック</dt>
-                <dd>＋ {{ block.settings.insurance.selected_or_first_available_variant.price | money }}</dd>
+                <dd>
+                  月額：＋{{ block.settings.insurance.selected_or_first_available_variant.price | divided_by: 1.1 | round: 0 | money_without_currency }}円
+                  <span class="tax-inc-price">税込{{ block.settings.insurance.selected_or_first_available_variant.price | money_without_currency }}円</span>
+                </dd>
               </dl>
               <div class="cta-button">
                 <a href="{{ block.settings.link_url }}" class="btn-apply">{{ block.settings.link_title }}</a>
